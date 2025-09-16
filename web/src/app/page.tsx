@@ -5,11 +5,11 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Aurora from "@/components/Aurora"
 import UseCasesCarousel from "@/components/UseCasesCarousel"
-import FlipCredential from "@/components/FlipCredential"
+
 import Image from "next/image"
 import ScrollProgress from "@/components/ScrollProgress"
 import HowItWorks from "@/components/HowItWorks"
-import WaitlistForm from "@/components/WaitlistForm"
+
 import FAQ from "@/components/FAQ"
 import ValueProposition from "@/components/ValueProposition"
 import ValuePropositionDetails from "@/components/ValueDetails"
@@ -17,7 +17,7 @@ import ValueDetailsExtended from "@/components/ValueDetailsExtended"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import Footer from "@/components/Footer"
 import { Particles } from "@/components/magicui/particles"
-import MeltingWord from "@/components/MeltingWord"
+
 import AnimatedActa from "@/components/AnimatedActa"
 
 const fadeInUp = {
@@ -81,8 +81,6 @@ export default function ActaLanding() {
               className="text-5xl sm:text-7xl lg:text-9xl"
               // timmings opcionales:
               delay={0.1}
-              duration={0.5}
-              animation="blurInUp"
             />
           </div>
 

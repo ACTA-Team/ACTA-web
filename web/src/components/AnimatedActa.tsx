@@ -3,38 +3,20 @@
 import React from "react";
 import clsx from "clsx";
 import { TextAnimate } from "@/components/magicui/text-animate";
-import { motion } from "motion/react";
+
 
 type MeltingWordProps = {
   word?: string;
   as?: React.ElementType;
   className?: string;
-  /** Shine overlay pass (set false to disable) */
-  shineOnce?: boolean;
-  /** Animation preset from your TextAnimate (e.g. 'blurInUp') */
-  animation?:
-    | "fadeIn"
-    | "blurIn"
-    | "blurInUp"
-    | "blurInDown"
-    | "slideUp"
-    | "slideDown"
-    | "slideLeft"
-    | "slideRight"
-    | "scaleUp"
-    | "scaleDown";
   delay?: number;
-  duration?: number;
 };
 
 export default function MeltingWord({
   word = "Acta",
   as: Tag = "h1",
   className = "",
-  shineOnce = true,
-  animation = "blurInUp",
   delay = 0.06,
-  duration = 0.45,
 }: MeltingWordProps) {
   return (
     <div className="relative overflow-visible">
