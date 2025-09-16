@@ -77,9 +77,9 @@ export default function ActaLanding() {
             </TextAnimate>
             <AnimatedActa
               word="Acta"
-              // puedes sobreescribir tamaño si quieres:
+              // you can override size if you want:
               className="text-5xl sm:text-7xl lg:text-9xl"
-              // timmings opcionales:
+              // optional timings:
               delay={0.1}
             />
           </div>

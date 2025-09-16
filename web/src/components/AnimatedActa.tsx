@@ -44,7 +44,7 @@ export default function MeltingWord({
           className
         )}
       >
-        {/* Texto animado carácter por carácter: mantiene el mismo gradiente en cada span */}
+        {/* Animated text character by character: maintains the same gradient on each span */}
         <TextAnimate
           animation="blurInUp"
           by="character"

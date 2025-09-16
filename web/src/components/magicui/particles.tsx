@@ -30,14 +30,14 @@ function useMousePosition(): MousePoint {
 
 interface ParticlesProps extends ComponentPropsWithoutRef<"div"> {
   className?: string;
-  quantity?: number;   // cantidad de partículas
-  staticity?: number;  // 0–100 (más alto = menos parallax)
-  ease?: number;       // 0–100 (más alto = sigue más rápido al puntero)
-  size?: number;       // radio base en px
+  quantity?: number;   // number of particles
+  staticity?: number;  // 0–100 (higher = less parallax)
+  ease?: number;       // 0–100 (higher = follows pointer faster)
+  size?: number;       // base radius in px
   refresh?: boolean;   // reseed/manual redraw
   color?: string;      // hex (#fff, #ffffff)
-  vx?: number;         // px/seg en X
-  vy?: number;         // px/seg en Y
+  vx?: number;         // px/sec in X
+  vy?: number;         // px/sec in Y
 }
 
 function hexToRgb(hex: string): number[] {
@@ -86,7 +86,7 @@ export const Particles: React.FC<ParticlesProps> = ({
   const rafID = useRef<number | null>(null);
   const resizeTimeout = useRef<number | null>(null);
 
-  // ease: 0–100 -> 0.01..0.05 (reducido para menos movimiento)
+  // ease: 0–100 -> 0.01..0.05 (reduced for less movement)
   const follow = useMemo(() => 0.01 + Math.min(Math.max(ease, 0), 100) * 0.0004, [ease]);
 
   const rgb = useMemo(() => hexToRgb(color), [color]);
@@ -108,7 +108,7 @@ export const Particles: React.FC<ParticlesProps> = ({
       window.removeEventListener("resize", handleResize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [color]); // si cambia el color, reinit para aplicar desde cero
+  }, [color]); // if color changes, reinit to apply from scratch
 
   useEffect(() => {
     onMouseMove();
@@ -118,7 +118,7 @@ export const Particles: React.FC<ParticlesProps> = ({
   useEffect(() => {
     initCanvas();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refresh, quantity, size]); // si cambias cantidad/tamaño, reseed
+  }, [refresh, quantity, size]); // if you change quantity/size, reseed
 
   const initCanvas = () => {
     resizeCanvas();
@@ -150,7 +150,7 @@ export const Particles: React.FC<ParticlesProps> = ({
     canvasRef.current.style.width = `${canvasSize.current.w}px`;
     canvasRef.current.style.height = `${canvasSize.current.h}px`;
 
-    // Dibujaremos en espacio de px CSS (escala por DPR)
+    // We'll draw in CSS px space (scale by DPR)
     context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
   };
 
@@ -164,7 +164,7 @@ export const Particles: React.FC<ParticlesProps> = ({
     const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1)); // 0.1–0.7
     const dx = (Math.random() - 0.5) * 0.1;                   // drift leve
     const dy = (Math.random() - 0.5) * 0.1;
-    const magnetism = 0.5 + Math.random() * 2;                // variación parallax reducida
+    const magnetism = 0.5 + Math.random() * 2;                // reduced parallax variation
     return { x, y, translateX, translateY, size: pSize, alpha, targetAlpha, dx, dy, magnetism };
   };
 
@@ -210,11 +210,11 @@ export const Particles: React.FC<ParticlesProps> = ({
   const animate = () => {
     clearContext();
 
-    // iteramos al revés por si eliminamos elementos
+    // iterate backwards in case we remove elements
     for (let i = circles.current.length - 1; i >= 0; i--) {
       const circle = circles.current[i];
 
-      // Alpha según cercanía a bordes (fade-in/out sutil)
+      // Alpha based on proximity to edges (subtle fade-in/out)
       const edge = [
         circle.x + circle.translateX - circle.size,
         canvasSize.current.w - circle.x - circle.translateX - circle.size,
@@ -230,18 +230,18 @@ export const Particles: React.FC<ParticlesProps> = ({
         circle.alpha = circle.targetAlpha * remapClosestEdge;
       }
 
-      // Movimiento base + deriva global
+      // Base movement + global drift
       circle.x += circle.dx + vx;
       circle.y += circle.dy + vy;
 
-      // Parallax hacia el puntero (ease alto = respuesta más rápida)
+      // Parallax towards pointer (high ease = faster response)
       const denom = Math.max(1, staticity / circle.magnetism);
       circle.translateX += (mouse.current.x / denom - circle.translateX) * follow;
       circle.translateY += (mouse.current.y / denom - circle.translateY) * follow;
 
       drawCircle(circle);
 
-      // Si sale del canvas, regenerar
+      // If it goes off canvas, regenerate
       if (
         circle.x < -circle.size ||
         circle.x > canvasSize.current.w + circle.size ||

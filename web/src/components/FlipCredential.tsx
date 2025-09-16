@@ -82,8 +82,8 @@ export default function FlipCredential({
         className="relative select-none rounded-2xl shadow-xl cursor-pointer"
         style={{
           width: `min(${maxWidth}px, 92vw)`,
-          aspectRatio: aspect,   // dinámico
-          minHeight: minH,       // más alto en móvil
+          aspectRatio: aspect,   // dynamic
+        minHeight: minH,       // taller on mobile
           transformStyle: "preserve-3d",
           willChange: "transform",
         }}
