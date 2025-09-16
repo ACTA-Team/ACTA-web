@@ -51,7 +51,7 @@ export default function ActaLanding() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Image 
-              src="/preview-img1.png" 
+              src="/Acta-logo.png" 
               alt="Acta Logo" 
               width={32} 
               height={32} 
@@ -91,7 +91,7 @@ export default function ActaLanding() {
             transition={{ ...fadeInUp.transition, delay: 0.15 }}
             className="mx-auto mt-5 max-w-2xl px-2 text-base text-muted-foreground sm:text-lg md:text-xl"
           >
-            One API. Zero databases. Verifiable credentials on Stellar.
+            The new infrastructure for digital trust.
           </motion.p>
 
           <motion.div
@@ -147,6 +147,8 @@ export default function ActaLanding() {
         </div>
       </section>
 
+
+  {/* 
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-4xl mx-auto">
           <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16" {...fadeInUp}>
@@ -164,7 +166,7 @@ export default function ActaLanding() {
             <WaitlistForm />
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-4xl mx-auto">
