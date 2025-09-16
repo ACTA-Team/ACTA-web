@@ -1,0 +1,250 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens to match Acta cosmic theme */
+  --background: #000000;
+  --foreground: #e6eaf2;
+  --card: #0f1629;
+  --card-foreground: #e6eaf2;
+  --popover: #0f1629;
+  --popover-foreground: #e6eaf2;
+  --primary: #6a52ff;
+  --primary-foreground: #ffffff;
+  --secondary: #1f2a44;
+  --secondary-foreground: #e6eaf2;
+  --muted: #1f2a44;
+  --muted-foreground: #9aa3b2;
+  --accent: #6a52ff;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4d4f;
+  --destructive-foreground: #ffffff;
+  --border: #1f2a44;
+  --input: #1f2a44;
+  --ring: #6a52ff;
+  --chart-1: #00d27a;
+  --chart-2: #ffb020;
+  --chart-3: #ff4d4f;
+  --chart-4: #27b3ff;
+  --chart-5: #6a52ff;
+  --radius: 1rem;
+  --sidebar: #0f1629;
+  --sidebar-foreground: #e6eaf2;
+  --sidebar-primary: #6a52ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1f2a44;
+  --sidebar-accent-foreground: #e6eaf2;
+  --sidebar-border: #1f2a44;
+  --sidebar-ring: #6a52ff;
+}
+
+.dark {
+  /* Dark mode uses same cosmic colors as default */
+  --background: #0b0f1a;
+  --foreground: #e6eaf2;
+  --card: #0f1629;
+  --card-foreground: #e6eaf2;
+  --popover: #0f1629;
+  --popover-foreground: #e6eaf2;
+  --primary: #6a52ff;
+  --primary-foreground: #ffffff;
+  --secondary: #1f2a44;
+  --secondary-foreground: #e6eaf2;
+  --muted: #1f2a44;
+  --muted-foreground: #9aa3b2;
+  --accent: #6a52ff;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4d4f;
+  --destructive-foreground: #ffffff;
+  --border: #1f2a44;
+  --input: #1f2a44;
+  --ring: #6a52ff;
+  --chart-1: #00d27a;
+  --chart-2: #ffb020;
+  --chart-3: #ff4d4f;
+  --chart-4: #27b3ff;
+  --chart-5: #6a52ff;
+  --radius: 1rem;
+  --sidebar: #0f1629;
+  --sidebar-foreground: #e6eaf2;
+  --sidebar-primary: #6a52ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1f2a44;
+  --sidebar-accent-foreground: #e6eaf2;
+  --sidebar-border: #1f2a44;
+  --sidebar-ring: #6a52ff;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+  --animate-shine: shine var(--duration) infinite linear
+;
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;
+    }
+  50% {
+    background-position: 100% 100%;
+    }
+  to {
+    background-position: 0% 0%;
+    }
+  }
+}
+
+@theme {
+  --animate-shiny-text: shiny-text 8s infinite;
+}
+
+@keyframes shiny-text {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .animate-shiny-text {
+    animation: shiny-text 2.25s linear infinite;
+  }
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Scrollbar thin */
+.scrollbar-thin {
+  scrollbar-width: thin;                    /* Firefox */
+  scrollbar-color: rgba(255,255,255,.25) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;                               /* Chrome / Edge / Safari */
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.22);
+  border-radius: 9999px;
+}
+.scrollbar-thin:hover::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.3);
+}
+
+/* ====== Melting Word (Acta) ====== */
+@layer utilities {
+  .melting-text {
+    position: relative;
+    display: inline-block;
+    line-height: 1.05;
+    /* subtle glow for cosmic theme */
+    text-shadow: 0 0 18px rgba(106, 82, 255, 0.25);
+    /* vertical breathing (melt) */
+    animation: acta-melt 3s ease-in-out infinite;
+    will-change: transform, filter;
+  }
+
+  .melting-text::before,
+  .melting-text::after {
+    /* duplicate the word without hardcoding it */
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    /* same gradient as main text */
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    z-index: -1;
+    transform: scaleY(1);
+    opacity: 0.5;
+    animation: acta-drip 3s ease-in-out infinite;
+  }
+
+  .melting-text::after {
+    /* softer, gooey trail */
+    filter: blur(10px);
+    opacity: 0.28;
+  }
+
+  /* Underline that draws on first cycle (optional but memorable) */
+  .melting-text::marker { content: ""; } /* silence list marker just in case */
+  .melting-text::selection { background: rgba(106,82,255,0.22); color: var(--foreground); }
+
+  /* Reduced motion: keep style, disable motion */
+  @media (prefers-reduced-motion: reduce) {
+    .melting-text,
+    .melting-text::before,
+    .melting-text::after {
+      animation: none !important;
+    }
+  }
+
+  @keyframes acta-melt {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(20px); }
+  }
+
+  @keyframes acta-drip {
+    0%, 100% { transform: scaleY(1);   opacity: 0.5; }
+    50%      { transform: scaleY(1.5); opacity: 0.7; }
+  }
+}
