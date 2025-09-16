@@ -17,6 +17,7 @@ import ValueDetailsExtended from "@/components/ValueDetailsExtended"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import Footer from "@/components/Footer"
 import { Particles } from "@/components/magicui/particles"
+import { ShineBorder } from "@/components/magicui/shine-border"
 
 import AnimatedActa from "@/components/AnimatedActa"
 
@@ -97,9 +98,14 @@ export default function ActaLanding() {
             {...fadeInUp}
             transition={{ delay: 0.3 }}
           >
-            <Button className="bg-gradient-to-r from-[#1B6BFF] to-[#8F43FF] text-white hover:from-[#1657CC] hover:to-[#7A36E0] rounded-2xl h-12 px-6 font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#1B6BFF]/40">
-              Try our Demo!
-            </Button>
+            <div className="relative overflow-hidden rounded-2xl">
+              <ShineBorder shineColor={["#6a52ff", "#1B6BFF", "#8F43FF"]} borderWidth={3} />
+              <Button asChild className="bg-card text-card-foreground hover:bg-card/70 rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/40 w-full">
+                <a href="https://dapp-acta.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  Try our Demo!
+                </a>
+              </Button>
+            </div>
           </motion.div>
 
         </div>
