@@ -72,9 +72,6 @@ export default function ActaLanding() {
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 text-center">
           <div className="flex flex-col items-center gap-2 mb-12">
-            <TextAnimate animation="blurIn" as="span" className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white">
-              Welcome to
-            </TextAnimate>
             <AnimatedActa
               word="Acta"
               className="text-5xl sm:text-7xl lg:text-9xl"
@@ -82,13 +79,13 @@ export default function ActaLanding() {
             />
           </div>
 
-          <motion.p
+          <motion.h3
             {...fadeInUp}
             transition={{ ...fadeInUp.transition, delay: 0.15 }}
-            className="mx-auto mt-5 max-w-2xl px-2 text-base text-muted-foreground sm:text-lg md:text-xl"
+            className="mx-auto mt-5 max-w-2xl px-2 text-xl sm:text-2xl md:text-3xl font-bold text-white"
           >
-            The new infrastructure for digital trust.
-          </motion.p>
+            The best infrastructure for digital trust.
+          </motion.h3>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
