@@ -74,7 +74,7 @@ export default function WaitlistForm() {
       <ShineBorder
         borderWidth={2}
         duration={12}
-        shineColor={["#6a52ff", "#1B6BFF", "#8F43FF"]}
+        shineColor={["#efb810", "#efb810", "#efb810"]}
         className="rounded-2xl"
       />
       <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl relative">
@@ -127,7 +127,7 @@ export default function WaitlistForm() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-[#1B6BFF] to-[#8F43FF] text-white hover:from-[#1657CC] hover:to-[#7A36E0] rounded-2xl h-14 font-semibold text-lg shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#1B6BFF]/40"
+              className="w-full bg-gradient-to-r from-[#efb810] to-[#efb810] text-black hover:from-[#d4a00e] hover:to-[#d4a00e] rounded-2xl h-14 font-semibold text-lg shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#efb810]/40"
             >
               {isSubmitting ? "Submitting..." : "Join Waitlist"}
             </Button>

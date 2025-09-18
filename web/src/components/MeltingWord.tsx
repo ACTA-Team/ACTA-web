@@ -25,7 +25,7 @@ export default function MeltingWord({
           "bg-clip-text text-transparent",
           "bg-[linear-gradient(90deg,var(--primary),var(--accent),var(--primary))]",
           // subtle inner glow via drop-shadow
-          "drop-shadow-[0_0_14px_rgba(106,82,255,0.25)]",
+          "drop-shadow-[0_0_14px_rgba(239,184,16,0.25)]",
           // ---- glow layers (no CSS file needed) ----
           // layer 1 (wider, softer)
           "before:content-[attr(data-text)] before:absolute before:inset-0 before:-z-10",

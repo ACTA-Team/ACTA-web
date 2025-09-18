@@ -20,6 +20,8 @@ import { Particles } from "@/components/magicui/particles"
 import { ShineBorder } from "@/components/magicui/shine-border"
 
 import AnimatedActa from "@/components/AnimatedActa"
+import WaitlistForm from "@/components/WaitlistForm"
+import FlipCredential from "@/components/FlipCredential"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -35,7 +37,7 @@ export default function ActaLanding() {
 
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-[#1B1F2E]" />
-        <Aurora />
+        {/* <Aurora /> */}
         <Particles
           className="absolute inset-0 z-0"
           quantity={60}
@@ -50,23 +52,20 @@ export default function ActaLanding() {
 
       <nav className="relative z-10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Image 
-              src="/Acta-logo.png" 
-              alt="Acta Logo" 
-              width={32} 
-              height={32} 
-              className="w-8 h-8"
-            />
-            <span className="text-2xl font-bold">Acta</span>
-          </div>
+          
         </div>
       </nav>
 
       <section className="relative z-10 isolate px-4 sm:px-6 py-12 sm:py-20 min-h-[85vh] md:min-h-[90vh] flex items-center">
         <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[#1B6BFF]/25 blur-3xl" />
-          <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-[#8F43FF]/25 blur-3xl" />
+          {/* Logo difuminado de fondo */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <img 
+              src="/Acta-logo.png" 
+              alt="ACTA Logo Background" 
+              className="w-96 h-96 object-contain opacity-30 blur-[3px] scale-220"
+            />
+          </div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent [mask-image:radial-gradient(350px_200px_at_50%_0%,#000_40%,transparent_80%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_0,transparent_23%,rgba(255,255,255,.06)_24%,transparent_25%),linear-gradient(to_bottom,transparent_0,transparent_23%,rgba(255,255,255,.06)_24%,transparent_25%)] bg-[size:44px_44px] opacity-40" />
         </div>
@@ -78,9 +77,7 @@ export default function ActaLanding() {
             </TextAnimate>
             <AnimatedActa
               word="Acta"
-              // you can override size if you want:
               className="text-5xl sm:text-7xl lg:text-9xl"
-              // optional timings:
               delay={0.1}
             />
           </div>
@@ -99,7 +96,7 @@ export default function ActaLanding() {
             transition={{ delay: 0.3 }}
           >
             <div className="relative overflow-hidden rounded-2xl">
-              <ShineBorder shineColor={["#6a52ff", "#1B6BFF", "#8F43FF"]} borderWidth={3} />
+              <ShineBorder shineColor={["#efb810", "#efb810", "#efb810"]} borderWidth={3} />
               <Button asChild className="bg-card text-card-foreground hover:bg-card/70 rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/40 w-full">
                 <a href="https://dapp-acta.vercel.app/" target="_blank" rel="noopener noreferrer">
                   Try our Demo!
@@ -152,7 +149,7 @@ export default function ActaLanding() {
       </section>
 
 
-  {/* 
+   
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-4xl mx-auto">
           <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16" {...fadeInUp}>
@@ -170,7 +167,7 @@ export default function ActaLanding() {
             <WaitlistForm />
           </motion.div>
         </div>
-      </section> */}
+      </section> 
 
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-4xl mx-auto">

@@ -11,33 +11,33 @@
   --card-foreground: #e6eaf2;
   --popover: #0f1629;
   --popover-foreground: #e6eaf2;
-  --primary: #6a52ff;
-  --primary-foreground: #ffffff;
+  --primary: #efb810;
+  --primary-foreground: #000000;
   --secondary: #1f2a44;
   --secondary-foreground: #e6eaf2;
   --muted: #1f2a44;
   --muted-foreground: #9aa3b2;
-  --accent: #6a52ff;
-  --accent-foreground: #ffffff;
+  --accent: #efb810;
+  --accent-foreground: #000000;
   --destructive: #ff4d4f;
   --destructive-foreground: #ffffff;
   --border: #1f2a44;
   --input: #1f2a44;
-  --ring: #6a52ff;
+  --ring: #efb810;
   --chart-1: #00d27a;
   --chart-2: #ffb020;
   --chart-3: #ff4d4f;
   --chart-4: #27b3ff;
-  --chart-5: #6a52ff;
+  --chart-5: #efb810;
   --radius: 1rem;
   --sidebar: #0f1629;
   --sidebar-foreground: #e6eaf2;
-  --sidebar-primary: #6a52ff;
-  --sidebar-primary-foreground: #ffffff;
+  --sidebar-primary: #efb810;
+  --sidebar-primary-foreground: #000000;
   --sidebar-accent: #1f2a44;
   --sidebar-accent-foreground: #e6eaf2;
   --sidebar-border: #1f2a44;
-  --sidebar-ring: #6a52ff;
+  --sidebar-ring: #efb810;
 }
 
 .dark {
@@ -48,33 +48,33 @@
   --card-foreground: #e6eaf2;
   --popover: #0f1629;
   --popover-foreground: #e6eaf2;
-  --primary: #6a52ff;
-  --primary-foreground: #ffffff;
+  --primary: #efb810;
+  --primary-foreground: #000000;
   --secondary: #1f2a44;
   --secondary-foreground: #e6eaf2;
   --muted: #1f2a44;
   --muted-foreground: #9aa3b2;
-  --accent: #6a52ff;
-  --accent-foreground: #ffffff;
+  --accent: #efb810;
+  --accent-foreground: #000000;
   --destructive: #ff4d4f;
   --destructive-foreground: #ffffff;
   --border: #1f2a44;
   --input: #1f2a44;
-  --ring: #6a52ff;
+  --ring: #efb810;
   --chart-1: #00d27a;
   --chart-2: #ffb020;
   --chart-3: #ff4d4f;
   --chart-4: #27b3ff;
-  --chart-5: #6a52ff;
+  --chart-5: #efb810;
   --radius: 1rem;
   --sidebar: #0f1629;
   --sidebar-foreground: #e6eaf2;
-  --sidebar-primary: #6a52ff;
-  --sidebar-primary-foreground: #ffffff;
+  --sidebar-primary: #efb810;
+  --sidebar-primary-foreground: #000000;
   --sidebar-accent: #1f2a44;
   --sidebar-accent-foreground: #e6eaf2;
   --sidebar-border: #1f2a44;
-  --sidebar-ring: #6a52ff;
+  --sidebar-ring: #efb810;
 }
 
 @theme inline {
@@ -196,7 +196,7 @@
     display: inline-block;
     line-height: 1.05;
     /* subtle glow for cosmic theme */
-    text-shadow: 0 0 18px rgba(106, 82, 255, 0.25);
+    text-shadow: 0 0 18px rgba(239, 184, 16, 0.25);
     /* vertical breathing (melt) */
     animation: acta-melt 3s ease-in-out infinite;
     will-change: transform, filter;
@@ -227,7 +227,7 @@
 
   /* Underline that draws on first cycle (optional but memorable) */
   .melting-text::marker { content: ""; } /* silence list marker just in case */
-  .melting-text::selection { background: rgba(106,82,255,0.22); color: var(--foreground); }
+  .melting-text::selection { background: rgba(239,184,16,0.22); color: var(--foreground); }
 
   /* Reduced motion: keep style, disable motion */
   @media (prefers-reduced-motion: reduce) {
