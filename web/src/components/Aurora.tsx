@@ -9,7 +9,7 @@ export default function Aurora() {
         aria-hidden
         className="absolute -top-1/3 left-1/2 h-[80vmax] w-[80vmax] -translate-x-1/2 rounded-full blur-3xl"
         style={{
-          background: "radial-gradient(closest-side, rgba(239,184,16,.25), transparent 60%)",
+          background: "radial-gradient(closest-side, rgba(255,255,255,.25), transparent 60%)",
         }}
         animate={{ rotate: [0, 20, 0] }}
         transition={{ duration: 18, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
@@ -18,7 +18,7 @@ export default function Aurora() {
         aria-hidden
         className="absolute -bottom-1/3 left-1/3 h-[70vmax] w-[70vmax] rounded-full blur-3xl"
         style={{
-          background: "radial-gradient(closest-side, rgba(239,184,16,.25), transparent 60%)",
+          background: "radial-gradient(closest-side, rgba(255,255,255,.25), transparent 60%)",
         }}
         animate={{ rotate: [0, -15, 0] }}
         transition={{ duration: 22, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}

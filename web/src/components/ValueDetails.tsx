@@ -56,19 +56,19 @@ export default function ValueDetails() {
             <TabsList className="grid grid-cols-3 w-full rounded-xl bg-white/5">
               <TabsTrigger 
                 value="issuers" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#efb810] data-[state=active]:to-[#efb810] data-[state=active]:text-black hover:bg-white/10 transition-all"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black hover:bg-white/10 transition-all"
               >
                 Issuers
               </TabsTrigger>
               <TabsTrigger 
                 value="holders" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#efb810] data-[state=active]:to-[#efb810] data-[state=active]:text-black hover:bg-white/10 transition-all"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black hover:bg-white/10 transition-all"
               >
                 Holders
               </TabsTrigger>
               <TabsTrigger 
                 value="verifiers" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#efb810] data-[state=active]:to-[#efb810] data-[state=active]:text-black hover:bg-white/10 transition-all"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black hover:bg-white/10 transition-all"
               >
                 Verifiers
               </TabsTrigger>
@@ -142,7 +142,7 @@ function PersonaPanel({
       <ul className="space-y-2 text-sm text-white/70">
         {bullets.map((b, i) => (
           <li key={i} className="flex gap-2">
-            <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#efb810] to-[#efb810]" />
+            <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#ffffff] to-[#ffffff]" />
             <span>{b}</span>
           </li>
         ))}

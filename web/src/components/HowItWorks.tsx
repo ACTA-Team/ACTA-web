@@ -82,7 +82,7 @@ function StepCard({ data }: { data: Step }) {
             <ul className="mt-4 space-y-2 text-sm text-white/80">
               {data.bullets.map((b, k) => (
                 <li key={k} className="flex items-start gap-2">
-                  <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#efb810] to-[#efb810]" />
+                  <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#ffffff] to-[#ffffff]" />
                   <span>{b}</span>
                 </li>
               ))}
@@ -225,8 +225,8 @@ export default function HowItWorks() {
         >
           <defs>
             <linearGradient id="hiwLine" x1="0" x2="1">
-              <stop offset="0%" stopColor="#efb810" />
-                    <stop offset="100%" stopColor="#efb810" />
+              <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="100%" stopColor="#ffffff" />
             </linearGradient>
           </defs>
           <motion.path

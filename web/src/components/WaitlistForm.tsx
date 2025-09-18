@@ -74,13 +74,13 @@ export default function WaitlistForm() {
       <ShineBorder
         borderWidth={2}
         duration={12}
-        shineColor={["#efb810", "#efb810", "#efb810"]}
-        className="rounded-2xl"
+        shineColor={["#F0E7CC", "#E9F8D8", "#FFFFFF"]}
+        className="rounded-3xl"
       />
-      <Card className="bg-card/50 backdrop-blur-sm border-border/50 rounded-2xl relative">
+      <Card className="bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-3xl relative shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_40px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_24px_60px_rgba(0,0,0,0.45)] hover:ring-1 hover:ring-white/10 after:pointer-events-none after:absolute after:inset-0 after:rounded-3xl after:border after:border-white/5">
         <CardHeader className="px-8 pt-8 pb-6">
-          <CardTitle className="text-3xl text-center mb-3">Join the waitlist</CardTitle>
-          <CardDescription className="text-center text-lg">
+          <CardTitle className="text-3xl text-center mb-3 font-extrabold uppercase tracking-[0.18em] text-transparent bg-clip-text bg-[linear-gradient(180deg,#F0E7CC_0%,#E9F8D8_55%,#FFFFFF_100%)] drop-shadow-[0_0_10px_rgba(255,255,255,0.08)]">Join the waitlist</CardTitle>
+          <CardDescription className="text-center text-lg text-white/85">
             Get early access to Acta API and credits for early partners.
           </CardDescription>
         </CardHeader>
@@ -104,7 +104,7 @@ export default function WaitlistForm() {
               onChange={(e) => setEmail(e.target.value)}
               required
               aria-label="Email address"
-              className="bg-input border-border rounded-xl h-12 text-base"
+              className="bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-2xl h-12 text-base text-white/85 placeholder:text-white/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300 hover:bg-[rgba(255,255,255,0.05)] focus:bg-[rgba(255,255,255,0.05)] focus:ring-1 focus:ring-white/20"
             />
 
             <Input
@@ -113,7 +113,7 @@ export default function WaitlistForm() {
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               aria-label="Company name"
-              className="bg-input border-border rounded-xl h-12 text-base"
+              className="bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-2xl h-12 text-base text-white/85 placeholder:text-white/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300 hover:bg-[rgba(255,255,255,0.05)] focus:bg-[rgba(255,255,255,0.05)] focus:ring-1 focus:ring-white/20"
             />
 
             <Textarea
@@ -121,13 +121,13 @@ export default function WaitlistForm() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               aria-label="Message"
-              className="bg-input border-border rounded-xl min-h-[140px] text-base p-4"
+              className="bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-2xl min-h-[140px] text-base p-4 text-white/85 placeholder:text-white/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300 hover:bg-[rgba(255,255,255,0.05)] focus:bg-[rgba(255,255,255,0.05)] focus:ring-1 focus:ring-white/20"
             />
 
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-[#efb810] to-[#efb810] text-black hover:from-[#d4a00e] hover:to-[#d4a00e] rounded-2xl h-14 font-semibold text-lg shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#efb810]/40"
+              className="w-full bg-[rgba(255,255,255,0.03)] border border-white/10 text-transparent bg-clip-text bg-[linear-gradient(180deg,#F0E7CC_0%,#E9F8D8_55%,#FFFFFF_100%)] hover:bg-[rgba(255,255,255,0.05)] rounded-3xl h-14 font-extrabold text-lg shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_40px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_24px_60px_rgba(0,0,0,0.45)] hover:ring-1 hover:ring-white/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/20 uppercase tracking-[0.18em] drop-shadow-[0_0_10px_rgba(255,255,255,0.08)]"
             >
               {isSubmitting ? "Submitting..." : "Join Waitlist"}
             </Button>
@@ -144,6 +144,8 @@ export default function WaitlistForm() {
             )}
           </form>
         </CardContent>
+        {/* soft inner vignette */}
+        <div className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_0_0_60px_rgba(255,255,255,0.03)]" />
       </Card>
     </div>
   );
