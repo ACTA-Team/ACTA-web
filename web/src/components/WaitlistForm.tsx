@@ -62,7 +62,6 @@ export default function WaitlistForm() {
       setMessage("");
       setStatus("ok");
     } catch (err) {
-      console.error(err);
       setStatus("error");
     } finally {
       setIsSubmitting(false);
