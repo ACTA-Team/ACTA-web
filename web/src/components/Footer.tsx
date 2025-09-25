@@ -16,7 +16,7 @@ export default function Footer() {
           <span className="text-xl font-bold">Acta</span>
         </div>
         <div className="text-center text-sm text-muted-foreground">
-          © 2025 Acta. The best infrastructure for digital trust.
+          © 2025 Acta. The new infrastructure for digital trust.
         </div>
       </div>
     </div>

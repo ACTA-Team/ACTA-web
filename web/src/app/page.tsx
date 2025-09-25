@@ -81,7 +81,7 @@ export default function ActaLanding() {
             transition={{ ...fadeInUp.transition, delay: 0.15 }}
             className="mx-auto mt-5 max-w-2xl px-2 text-xl sm:text-2xl md:text-3xl font-bold text-white"
           >
-            The best infrastructure for digital trust.
+            The new infrastructure for digital trust.
           </motion.h3>
 
           <motion.div
