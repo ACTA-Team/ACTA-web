@@ -6,7 +6,6 @@ export async function POST(request: NextRequest) {
     const { email, company, message } = body
 
     // In a real app, you would save this to a database
-    console.log("New lead:", { email, company, message })
 
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1000))
