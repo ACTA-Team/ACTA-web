@@ -90,8 +90,8 @@ export default function ActaLanding() {
             transition={{ delay: 0.3 }}
           >
             <div className="relative overflow-hidden rounded-2xl">
-              <ShineBorder shineColor={["#ffffff", "#ffffff", "#ffffff"]} borderWidth={3} />
-              <Button asChild className="bg-card text-card-foreground hover:bg-card/70 rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/40 w-full">
+              <ShineBorder shineColor={["#404040", "#808080", "#404040"]} borderWidth={1} />
+              <Button asChild className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40 w-full">
                 <a href="https://dapp-acta.vercel.app/" target="_blank" rel="noopener noreferrer">
                   Try our Demo!
                 </a>

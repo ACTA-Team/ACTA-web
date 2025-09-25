@@ -2,9 +2,7 @@
 
 import type React from "react";
 import { motion } from "framer-motion";
-import {
-  Card,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Tabs,
@@ -13,12 +11,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 import { TextAnimate } from "@/components/magicui/text-animate";
-
-import {
-  ShieldCheck,
-  Webhook,
-  CheckCircle2,
-} from "lucide-react";
+import { ShieldCheck, Webhook, CheckCircle2 } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -51,24 +44,43 @@ export default function ValueDetails() {
         </motion.div>
 
         {/* Right column - Tabs */}
-        <motion.div {...fadeInUp} className="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-6">
-          <Tabs defaultValue="issuers" className="w-full">
-            <TabsList className="grid grid-cols-3 w-full rounded-xl bg-white/5">
-              <TabsTrigger 
-                value="issuers" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black hover:bg-white/10 transition-all"
+        <motion.div
+          {...fadeInUp}
+          className="rounded-2xl border-none bg-black/20 p-4 md:p-6"
+        >
+          <Tabs
+            defaultValue="issuers"
+            className="w-full
+              [&_[role=tabpanel]]:outline-none
+              [&_[role=tabpanel]]:focus:outline-none
+              [&_[role=tabpanel]]:focus-visible:outline-none
+              [&_[role=tabpanel]]:ring-0
+              [&_[role=tabpanel]]:focus:ring-0
+              [&_[role=tabpanel]]:focus-visible:ring-0
+              [&_[role=tabpanel]]:focus-visible:ring-offset-0"
+          >
+            <TabsList className="grid grid-cols-3 w-full rounded-xl bg-black/30">
+              <TabsTrigger
+                value="issuers"
+                className="transition-all hover:bg-white/10
+                  data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black
+                  outline-none ring-0 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               >
                 Issuers
               </TabsTrigger>
-              <TabsTrigger 
-                value="holders" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black hover:bg-white/10 transition-all"
+              <TabsTrigger
+                value="holders"
+                className="transition-all hover:bg-white/10
+                  data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black
+                  outline-none ring-0 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               >
                 Holders
               </TabsTrigger>
-              <TabsTrigger 
-                value="verifiers" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black hover:bg-white/10 transition-all"
+              <TabsTrigger
+                value="verifiers"
+                className="transition-all hover:bg-white/10
+                  data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#ffffff] data-[state=active]:to-[#ffffff] data-[state=active]:text-black
+                  outline-none ring-0 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               >
                 Verifiers
               </TabsTrigger>
@@ -131,13 +143,15 @@ function PersonaPanel({
   badge: string;
 }) {
   return (
-    <Card className="bg-card/40 backdrop-blur-sm border-border/50 rounded-2xl p-5 md:p-6">
+    <Card className="bg-black/40 backdrop-blur-sm border-none rounded-2xl p-5 md:p-6">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           {icon}
           <h4 className="text-lg font-semibold">{title}</h4>
         </div>
-        <Badge className="bg-white/10 text-white border-white/20 rounded-xl">{badge}</Badge>
+        <Badge className="bg-white/10 text-white border-none rounded-xl">
+          {badge}
+        </Badge>
       </div>
       <ul className="space-y-2 text-sm text-white/70">
         {bullets.map((b, i) => (
