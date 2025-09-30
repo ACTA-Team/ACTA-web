@@ -89,7 +89,7 @@ Configure `.env` with the following variables:
 
 ```env
 # API Configuration
-NEXT_PUBLIC_API_URL=https://acta.up.railway.app/v1
+NEXT_PUBLIC_API_URL=https://api.acta.build
 
 # Application Settings
 NEXT_PUBLIC_APP_NAME=ACTA Web
