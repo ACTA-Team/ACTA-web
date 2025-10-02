@@ -33,7 +33,7 @@ export default function ValueDetails() {
         {/* Left column - Title */}
         <motion.div {...fadeInUp} className="space-y-5">
           <TextAnimate
-            className="text-left text-xl md:text-6xl font-bold"
+            className="text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold"
             animation="slideLeft"
             by="word"
             delay={0.9}

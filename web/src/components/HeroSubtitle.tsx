@@ -18,7 +18,7 @@ export default function HeroSubtitle({}: HeroSubtitleProps) {
     <motion.h3
       {...fadeInUp}
       transition={{ ...fadeInUp.transition, delay: 0.15 }}
-      className="mx-auto mt-5 max-w-2xl px-2 text-xl sm:text-2xl md:text-3xl font-bold text-white"
+      className="mx-auto mt-5 max-w-2xl px-2 text-xl sm:text-2xl md:text-[50px] font-bold text-transparent bg-clip-text bg-[linear-gradient(180deg,#F0E7CC_0%,#E9F8D8_55%,#FFFFFF_100%)]"
     >
       The new infrastructure for digital trust.
     </motion.h3>
