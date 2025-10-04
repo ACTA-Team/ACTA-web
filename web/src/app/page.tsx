@@ -22,6 +22,7 @@ import { ShineBorder } from "@/components/magicui/shine-border"
 import AnimatedActa from "@/components/AnimatedActa"
 import WaitlistForm from "@/components/WaitlistForm"
 import FlipCredential from "@/components/FlipCredential"
+import HeroSubtitle from "@/components/HeroSubtitle"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -76,13 +77,7 @@ export default function ActaLanding() {
             />
           </div>
 
-          <motion.h3
-            {...fadeInUp}
-            transition={{ ...fadeInUp.transition, delay: 0.15 }}
-            className="mx-auto mt-5 max-w-2xl px-2 text-xl sm:text-2xl md:text-3xl font-bold text-white"
-          >
-            The new infrastructure for digital trust.
-          </motion.h3>
+          <HeroSubtitle delay={0.15} />
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
