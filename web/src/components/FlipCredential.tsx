@@ -20,7 +20,7 @@ type Props = {
 };
 
 export default function FlipCredential({
-  starUrl = "/ActaCard.png",
+  starUrl = "/images/acta_card/acta-card-md.avif",
   starOpacity = 0.18,
   maxWidth = 980,
 }: Props) {

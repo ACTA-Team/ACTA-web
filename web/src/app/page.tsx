@@ -3,10 +3,9 @@
 import type React from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import Aurora from "@/components/Aurora"
 import UseCasesCarousel from "@/components/UseCasesCarousel"
+import OptimizedImage from "@/components/OptimizedImage"
 
-import Image from "next/image"
 import ScrollProgress from "@/components/ScrollProgress"
 import HowItWorks from "@/components/HowItWorks"
 
@@ -14,7 +13,6 @@ import FAQ from "@/components/FAQ"
 import ValueProposition from "@/components/ValueProposition"
 import ValuePropositionDetails from "@/components/ValueDetails"
 import ValueDetailsExtended from "@/components/ValueDetailsExtended"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import Footer from "@/components/Footer"
 import { Particles } from "@/components/magicui/particles"
 import { ShineBorder } from "@/components/magicui/shine-border"
@@ -61,10 +59,14 @@ export default function ActaLanding() {
         <div className="pointer-events-none absolute inset-0 z-0">
           {/* Logo difuminado de fondo */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <img 
-              src="/Acta-logo.png" 
+            <OptimizedImage 
+              imageKey="acta-logo"
+              size="xl"
               alt="ACTA Logo Background" 
+              width={384}
+              height={384}
               className="w-96 h-96 object-contain opacity-30 blur-[3px] scale-220"
+              priority
             />
           </div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent [mask-image:radial-gradient(350px_200px_at_50%_0%,#000_40%,transparent_80%)]" />

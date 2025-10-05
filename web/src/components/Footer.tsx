@@ -1,13 +1,13 @@
-;
-import Image from "next/image";
+import OptimizedImage from "./OptimizedImage";
 
 export default function Footer() {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex flex-col items-center space-y-4">
         <div className="flex items-center space-x-2">
-          <Image 
-            src="/Acta-logo.png" 
+          <OptimizedImage 
+            imageKey="acta-logo"
+            size="sm"
             alt="Acta Logo" 
             width={24} 
             height={24} 
