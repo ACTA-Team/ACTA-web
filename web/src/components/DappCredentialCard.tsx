@@ -73,6 +73,14 @@ export default function DappCredentialCard({
               opacity: 0.98,
             }}
           />
+          {/* Subtle ACTA watermark on the left side */}
+          <div className="absolute inset-0 pointer-events-none">
+            <img
+              src="/Acta-logo.png"
+              alt=""
+              className="absolute left-[-160px] top-1/2 -translate-y-1/2 h-[680px] md:h-[720px] opacity-[0.08] saturate-0 rotate-0"
+            />
+          </div>
 
           <div className="relative h-full w-full grid grid-cols-1 md:grid-cols-12 gap-4 p-6">
             {/* Left info */}
@@ -95,7 +103,7 @@ export default function DappCredentialCard({
                   <span className="inline-flex items-center justify-center h-5 w-5 rounded-full border border-white/20 bg-white/10">✓</span>
                   <span className="text-sm">Verified</span>
                 </div>
-                <p className="italic text-white/70" style={{ fontSize: disclaimerSize }}>
+                <p className="italic text-white/80" style={{ fontSize: disclaimerSize }}>
                   *Demo credential; no legal validity*
                 </p>
               </div>

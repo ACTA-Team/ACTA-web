@@ -84,40 +84,38 @@ export default function DemoPage() {
             <p className="text-muted-foreground mt-2">View a sample credential and verify it against the API.</p>
           </div>
 
-          <div className="flex flex-col items-center gap-6">
-            <DappCredentialCard
-              title="ACTA Identity"
-              front={{
-                holder: "John Doe",
-                issuedBy: "ACTA",
-                issuedOn: "Jan 15, 2025",
-                expiresOn: "12/25",
-                category: "Identity",
-              }}
-              backFields={[
-                { k: "Credential ID", v: "cred_demo-1234-identity" },
-                { k: "Standard", v: "W3C Verifiable Credential 2.0" },
-                { k: "Signature", v: "Ed25519 (Stellar)" },
-                { k: "Status", v: "Active" },
-                { k: "On-chain hash", v: "0x8f7a…b21c" },
-              ]}
-              qrFrontValue="https://acta.app/demo/credential/identity-demo"
-              qrBackValue="https://acta.app/verify/cred_demo-1234-identity"
-            />
-
-            <div className="relative w-full max-w-3xl">
-              <ShineBorder className="rounded-3xl" borderWidth={2} duration={16} shineColor={["#FFE9A8", "#F8D776", "#D7B154"]} />
-              <Card className="bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-3xl relative">
-                <CardHeader>
-                  <CardTitle>Verification Demo</CardTitle>
-                  <CardDescription>Press Verify and we will query the ACTA API.</CardDescription>
-                </CardHeader>
-                <CardContent className="flex justify-center">
-                  <Button onClick={handleVerify} disabled={loading} className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-12 px-6 font-semibold">
-                    {loading ? "Verifying…" : "Verify"}
-                  </Button>
-                </CardContent>
-              </Card>
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-5xl">
+              <div className="flex items-center justify-center">
+                <DappCredentialCard
+                  title="ACTA Identity"
+                  front={{
+                    holder: "John Doe",
+                    issuedBy: "ACTA",
+                    issuedOn: "Jan 15, 2025",
+                    expiresOn: "12/25",
+                    category: "Identity",
+                  }}
+                  backFields={[
+                    { k: "Credential ID", v: "cred_demo-1234-identity" },
+                    { k: "Standard", v: "W3C Verifiable Credential 2.0" },
+                    { k: "Signature", v: "Ed25519 (Stellar)" },
+                    { k: "Status", v: "Active" },
+                    { k: "On-chain hash", v: "0x8f7a…b21c" },
+                  ]}
+                  qrFrontValue="https://acta.app/demo/credential/identity-demo"
+                  qrBackValue="https://acta.app/verify/cred_demo-1234-identity"
+                />
+              </div>
+              <div className="mt-4 sm:mt-6 flex justify-start">
+                <Button
+                  onClick={handleVerify}
+                  disabled={loading}
+                  className="rounded-2xl h-12 px-6 font-semibold text-black bg-gradient-to-br from-[#FFE9A8] via-[#F8D776] to-[#D7B154] shadow-lg shadow-[#D7B154]/30 hover:brightness-105"
+                >
+                  {loading ? "Verifying…" : "Verify"}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
