@@ -20,6 +20,7 @@ import { Particles } from "@/components/magicui/particles";
 import { ShineBorder } from "@/components/magicui/shine-border";
 import DappCredentialCard from "@/components/DappCredentialCard";
 import { TextAnimate } from "@/components/magicui/text-animate";
+import { usePostHog } from "posthog-js/react";
 
 type VerifyResult = {
   success?: boolean;
@@ -45,6 +46,7 @@ export default function DemoPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<VerifyResult | null>(null);
   const [qrTxUrl, setQrTxUrl] = useState<string | null>(null);
+  const ph = usePostHog();
 
   const ACTA_API =
     process.env.NEXT_PUBLIC_API_URL ||
@@ -53,6 +55,7 @@ export default function DemoPage() {
   const STELLAR_NETWORK = process.env.NEXT_PUBLIC_STELLAR_NETWORK || "public";
 
   const handleVerify = async () => {
+    ph?.capture("clicked_verify", { location: "demo_page" });
     setLoading(true);
     setOpen(true);
     setResult(null);

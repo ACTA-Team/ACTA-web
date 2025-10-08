@@ -18,6 +18,7 @@ import { TextAnimate } from "@/components/magicui/text-animate";
 import Footer from "@/components/Footer";
 import { Particles } from "@/components/magicui/particles";
 import { ShineBorder } from "@/components/magicui/shine-border";
+import { usePostHog } from "posthog-js/react";
 
 import AnimatedActa from "@/components/AnimatedActa";
 import WaitlistForm from "@/components/WaitlistForm";
@@ -31,6 +32,7 @@ const fadeInUp = {
 };
 
 export default function ActaLanding() {
+  const ph = usePostHog();
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ScrollProgress />
@@ -89,7 +91,14 @@ export default function ActaLanding() {
                 asChild
                 className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40 w-full"
               >
-                <a href="/demo">
+                <a
+                  href="/demo"
+                  onClick={() =>
+                    ph?.capture("clicked_try_demo", {
+                      location: "landing_page",
+                    })
+                  }
+                >
                   Try our Demo!
                 </a>
               </Button>
