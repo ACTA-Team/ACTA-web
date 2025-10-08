@@ -1,6 +1,4 @@
 "use client";
-
-import posthog from 'posthog-js'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqData = [
@@ -39,10 +37,6 @@ export default function FAQ() {
       type="single"
       collapsible
       className="space-y-4"
-      onValueChange={(value) => {
-        // Evento manual: abrir/cerrar item del FAQ
-        posthog.capture('faq_open', { value })
-      }}
     >
       {faqData.map((faq, index) => (
         <AccordionItem

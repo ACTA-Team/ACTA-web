@@ -7,7 +7,6 @@ import React, {
   useState,
   KeyboardEvent,
 } from "react";
-import posthog from 'posthog-js'
 import { motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
 
@@ -29,10 +28,6 @@ export default function FlipCredential({
   const toggle = () => {
     setFlipped((f) => {
       const next = !f
-      // Evento manual: flip de la credencial
-      posthog.capture('credential_flip', {
-        side: next ? 'back' : 'front',
-      })
       return next
     })
   }

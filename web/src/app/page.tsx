@@ -3,7 +3,6 @@
 import type React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import posthog from "posthog-js";
 import Aurora from "@/components/Aurora";
 import UseCasesCarousel from "@/components/UseCasesCarousel";
 
@@ -94,9 +93,7 @@ export default function ActaLanding() {
                   href="https://dapp-acta.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() =>
-                    posthog.capture("demo_click", { source: "landing_cta" })
-                  }
+                  // onClick removed (PostHog)
                 >
                   Try our Demo!
                 </a>

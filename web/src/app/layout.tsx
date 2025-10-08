@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import { PostHogProvider } from './providers'
 
 export const metadata: Metadata = {
   title: "ACTA",
@@ -18,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <PostHogProvider>
-          {children}
-        </PostHogProvider>
+        {children}
       </body>
     </html>
   );
