@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,6 +19,7 @@ import {
 import { Particles } from "@/components/magicui/particles";
 import { ShineBorder } from "@/components/magicui/shine-border";
 import DappCredentialCard from "@/components/DappCredentialCard";
+import { TextAnimate } from "@/components/magicui/text-animate";
 
 type VerifyResult = {
   success?: boolean;
@@ -31,6 +33,12 @@ type VerifyResult = {
   error?: string;
   details?: string;
 };
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 },
+} as const;
 
 export default function DemoPage() {
   const [open, setOpen] = useState(false);
@@ -123,19 +131,47 @@ export default function DemoPage() {
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8 text-center">
-            <img
+            <motion.img
               src="/Acta-logo.png"
               alt="ACTA"
               className="mx-auto h-16 w-auto opacity-90"
+              initial={fadeInUp.initial}
+              animate={fadeInUp.animate}
+              transition={fadeInUp.transition}
             />
-            <h1 className="mt-4 text-2xl sm:text-3xl font-bold">ACTA Demo</h1>
-            <p className="text-muted-foreground mt-2">
+            <TextAnimate
+              as="h1"
+              by="word"
+              animation="blurInUp"
+              delay={0.1}
+              duration={0.6}
+              className="mt-4 text-2xl sm:text-3xl font-bold"
+              startOnView
+              once
+            >
+              ACTA Demo
+            </TextAnimate>
+            <TextAnimate
+              as="p"
+              by="word"
+              animation="fadeIn"
+              delay={0.2}
+              duration={0.5}
+              className="text-muted-foreground mt-2"
+              startOnView
+              once
+            >
               View a sample credential and verify it against the API.
-            </p>
+            </TextAnimate>
           </div>
 
           <div className="flex justify-center">
-            <div className="relative w-full max-w-[920px]">
+            <motion.div
+              className="relative w-full max-w-[920px]"
+              initial={fadeInUp.initial}
+              animate={fadeInUp.animate}
+              transition={fadeInUp.transition}
+            >
               <div className="">
               <DappCredentialCard
                 title="ACTA Identity"
@@ -157,7 +193,12 @@ export default function DemoPage() {
                 qrBackValue="https://acta.app/verify/cred_demo-1234-identity"
               />
               </div>
-              <div className="mt-2 sm:mt-3 flex justify-start">
+              <motion.div
+                className="mt-2 sm:mt-3 flex justify-start"
+                initial={fadeInUp.initial}
+                animate={fadeInUp.animate}
+                transition={{ ...fadeInUp.transition, delay: 0.1 }}
+              >
                 <div className="relative overflow-hidden rounded-2xl">
                   <ShineBorder
                     shineColor={["#404040", "#808080", "#404040"]}
@@ -171,8 +212,8 @@ export default function DemoPage() {
                     {loading ? "Verificando…" : "Verificar"}
                   </Button>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
