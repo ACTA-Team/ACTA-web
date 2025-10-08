@@ -89,8 +89,9 @@ export default function DemoPage() {
       } else {
         setResult(json as VerifyResult);
       }
-    } catch (e: any) {
-      setResult({ error: "Error de red", details: String(e?.message || e) });
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setResult({ error: "Error de red", details: msg });
     } finally {
       setLoading(false);
     }
@@ -127,8 +128,8 @@ export default function DemoPage() {
           </div>
 
           <div className="flex justify-center">
-            <div className="relative w-full max-w-5xl">
-              <div className="flex items-center justify-center">
+            <div className="relative w-fit">
+              <div className="">
                 <DappCredentialCard
                   title="ACTA Identity"
                   front={{
