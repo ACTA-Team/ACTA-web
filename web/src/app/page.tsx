@@ -90,7 +90,7 @@ export default function ActaLanding() {
                 className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40 w-full"
               >
                 <a
-                  href="https://dapp-acta.vercel.app/"
+                  href="https://testnet.acta.build"
                   target="_blank"
                   rel="noopener noreferrer"
                   // onClick removed (PostHog)
