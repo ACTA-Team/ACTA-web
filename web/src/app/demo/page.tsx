@@ -2,8 +2,19 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Particles } from "@/components/magicui/particles";
 import { ShineBorder } from "@/components/magicui/shine-border";
 import DappCredentialCard from "@/components/DappCredentialCard";
@@ -26,7 +37,10 @@ export default function DemoPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<VerifyResult | null>(null);
 
-  const ACTA_API = process.env.NEXT_PUBLIC_ACTA_API_URL || "http://localhost:8000";
+  const ACTA_API =
+    process.env.NEXT_PUBLIC_API_URL ||
+    process.env.NEXT_PUBLIC_ACTA_API_URL ||
+    "http://localhost:8000";
 
   const handleVerify = async () => {
     setLoading(true);
@@ -34,36 +48,49 @@ export default function DemoPage() {
     setResult(null);
 
     try {
+      // Construir payload similar al dApp-ACTA (API v2)
+      const expiresAt = new Date(Date.now() + 31536000000).toISOString();
       const payload = {
         data: {
-          credentialSubject: {
-            id: "did:acta:demo123",
-            name: "Demo User",
+          name: "Demo User",
+          degree: "Identity",
+          university: "ACTA",
+          description: "Demo credential for ACTA verification",
+          expiresAt,
+          claims: {
+            standard: "W3C VC 2.0",
+            signature: "Ed25519 (Stellar)",
           },
-          type: ["VerifiableCredential", "DemoCredential"],
-          issuer: "Acta",
         },
         metadata: {
-          issuer: "Acta",
+          issuer: "ACTA",
           subject: "Demo User",
-          expirationDate: new Date(Date.now() + 31536000000).toISOString(),
+          expirationDate: expiresAt,
         },
       };
 
+      // Usar únicamente el endpoint de credenciales del ACTA API.
       const res = await fetch(`${ACTA_API}/credentials`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(payload),
       });
 
-      const json = await res.json();
+      const json = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setResult({ error: json?.error || "Request failed", details: json?.details });
+        const isPublicApi = /api\.acta\.build/.test(ACTA_API);
+        const hint = isPublicApi
+          ? "Public API no puede almacenar credenciales sin backend configurado"
+          : undefined;
+        const message = json?.message || json?.error || "Request failed";
+        const details = json?.details || hint || `HTTP ${res.status}`;
+        setResult({ error: message, details });
       } else {
         setResult(json as VerifyResult);
       }
     } catch (e: any) {
-      setResult({ error: "Network error", details: String(e?.message || e) });
+      setResult({ error: "Error de red", details: String(e?.message || e) });
     } finally {
       setLoading(false);
     }
@@ -73,15 +100,30 @@ export default function DemoPage() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-[#1B1F2E]" />
-        <Particles className="absolute inset-0 z-0" quantity={60} staticity={40} ease={70} size={0.4} vx={0} vy={0} color="#ffffff" />
+        <Particles
+          className="absolute inset-0 z-0"
+          quantity={60}
+          staticity={40}
+          ease={70}
+          size={0.4}
+          vx={0}
+          vy={0}
+          color="#ffffff"
+        />
       </div>
 
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8 text-center">
-            <img src="/Acta-logo.png" alt="ACTA" className="mx-auto h-16 w-auto opacity-90" />
+            <img
+              src="/Acta-logo.png"
+              alt="ACTA"
+              className="mx-auto h-16 w-auto opacity-90"
+            />
             <h1 className="mt-4 text-2xl sm:text-3xl font-bold">ACTA Demo</h1>
-            <p className="text-muted-foreground mt-2">View a sample credential and verify it against the API.</p>
+            <p className="text-muted-foreground mt-2">
+              View a sample credential and verify it against the API.
+            </p>
           </div>
 
           <div className="flex justify-center">
@@ -113,7 +155,7 @@ export default function DemoPage() {
                   disabled={loading}
                   className="rounded-2xl h-12 px-6 font-semibold text-black bg-gradient-to-br from-[#FFE9A8] via-[#F8D776] to-[#D7B154] shadow-lg shadow-[#D7B154]/30 hover:brightness-105"
                 >
-                  {loading ? "Verifying…" : "Verify"}
+                  {loading ? "Verificando…" : "Verificar"}
                 </Button>
               </div>
             </div>
@@ -124,22 +166,34 @@ export default function DemoPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Chaincert verification</DialogTitle>
+            <DialogTitle>ACTA verification</DialogTitle>
           </DialogHeader>
 
           {!result && (
-            <div className="py-4 text-sm text-muted-foreground">Processing request…</div>
+            <div className="py-4 text-sm text-muted-foreground">
+              Processing request…
+            </div>
           )}
 
           {result && result.error && (
             <div className="space-y-3">
-              <div className="text-sm">Issuer: <span className="text-white/80">Acta</span></div>
-              <div className="text-sm">Recipient: <span className="text-white/80">Demo User</span></div>
-              <div className="text-sm">Blockchain: <span className="text-white/80">Stellar / Testnet</span></div>
+              <div className="text-sm">
+                Issuer: <span className="text-white/80">Acta</span>
+              </div>
+              <div className="text-sm">
+                Recipient: <span className="text-white/80">Demo User</span>
+              </div>
+              <div className="text-sm">
+                Blockchain:{" "}
+                <span className="text-white/80">Stellar / Testnet</span>
+              </div>
               <div className="mt-4 rounded-md border border-destructive/30 bg-destructive/10 p-3 text-destructive text-sm">
-                Something went wrong while searching the transaction. Please try again later.
+                Something went wrong while searching the transaction. Please try
+                again later.
                 {result.details ? (
-                  <div className="mt-2 text-xs opacity-80">{result.details}</div>
+                  <div className="mt-2 text-xs opacity-80">
+                    {result.details}
+                  </div>
                 ) : null}
               </div>
             </div>
@@ -153,8 +207,14 @@ export default function DemoPage() {
               <Field k="Issuance contract" v={result.data.contractId} />
               <Field k="Hash" v={result.data.hash} />
               <Field k="Transaction" v={result.data.transactionHash} />
-              <Field k="Ledger sequence" v={String(result.data.ledgerSequence)} />
-              <Field k="Created at" v={new Date(result.data.createdAt).toLocaleString()} />
+              <Field
+                k="Ledger sequence"
+                v={String(result.data.ledgerSequence)}
+              />
+              <Field
+                k="Created at"
+                v={new Date(result.data.createdAt).toLocaleString()}
+              />
             </div>
           )}
         </DialogContent>

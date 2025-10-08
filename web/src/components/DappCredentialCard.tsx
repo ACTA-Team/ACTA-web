@@ -49,8 +49,8 @@ export default function DappCredentialCard({
         tabIndex={0}
         aria-pressed={flipped}
         onClick={toggle}
-        className="relative select-none rounded-2xl shadow-xl cursor-pointer border border-[#F0E7CC]/30"
-        style={{ width: `min(${baseW}px, 92vw)`, aspectRatio: "16 / 9", transformStyle: "preserve-3d" }}
+        className="relative select-none rounded-2xl shadow-xl cursor-pointer border border-[#F0E7CC]/30 inline-block"
+        style={{ width: `min(${baseW}px, 92vw)`, aspectRatio: "16 / 9", transformStyle: "preserve-3d", willChange: "transform", contain: "layout paint" }}
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ type: "spring", stiffness: 120, damping: 14, mass: 0.8 }}
       >
