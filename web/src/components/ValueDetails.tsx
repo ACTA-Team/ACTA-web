@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { motion } from "framer-motion";
+import posthog from 'posthog-js'
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -50,6 +51,10 @@ export default function ValueDetails() {
         >
           <Tabs
             defaultValue="issuers"
+            onValueChange={(value) => {
+              // Evento manual: cambio de tabs en la sección de personas
+              posthog.capture('persona_tab_change', { value })
+            }}
             className="w-full
               [&_[role=tabpanel]]:outline-none
               [&_[role=tabpanel]]:focus:outline-none

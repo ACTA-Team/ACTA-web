@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import posthog from 'posthog-js'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -36,6 +37,12 @@ export default function WaitlistForm() {
     }
 
     setIsSubmitting(true);
+    // Evento manual: inicio de submit (sin PII)
+    posthog.capture('waitlist_submit_start', {
+      has_company: Boolean(company?.trim()),
+      has_message: Boolean(message?.trim()),
+      page: typeof window !== 'undefined' ? window.location.pathname : '',
+    })
 
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
@@ -61,8 +68,17 @@ export default function WaitlistForm() {
       setCompany("");
       setMessage("");
       setStatus("ok");
+
+      // Evento manual: submit exitoso
+      posthog.capture('waitlist_submit_ok', {
+        page: typeof window !== 'undefined' ? window.location.pathname : '',
+      })
     } catch (err) {
       setStatus("error");
+      // Evento manual: submit con error
+      posthog.capture('waitlist_submit_error', {
+        page: typeof window !== 'undefined' ? window.location.pathname : '',
+      })
     } finally {
       setIsSubmitting(false);
     }
