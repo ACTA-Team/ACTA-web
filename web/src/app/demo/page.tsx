@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Particles } from "@/components/magicui/particles";
-import FlipCredential from "@/components/FlipCredential";
+import DappCredentialCard from "@/components/DappCredentialCard";
 
 type VerifyResult = {
   success?: boolean;
@@ -84,7 +84,25 @@ export default function DemoPage() {
           </div>
 
           <div className="flex flex-col items-center gap-6">
-            <FlipCredential />
+            <DappCredentialCard
+              title="ACTA Identity"
+              front={{
+                holder: "John Doe",
+                issuedBy: "ACTA",
+                issuedOn: "Jan 15, 2025",
+                expiresOn: "12/25",
+                category: "Identity",
+              }}
+              backFields={[
+                { k: "Credential ID", v: "cred_demo-1234-identity" },
+                { k: "Standard", v: "W3C Verifiable Credential 2.0" },
+                { k: "Signature", v: "Ed25519 (Stellar)" },
+                { k: "Status", v: "Active" },
+                { k: "On-chain hash", v: "0x8f7a…b21c" },
+              ]}
+              qrFrontValue="https://acta.app/demo/credential/identity-demo"
+              qrBackValue="https://acta.app/verify/cred_demo-1234-identity"
+            />
 
             <Card className="w-full max-w-3xl bg-card/40 border-white/10">
               <CardHeader>
