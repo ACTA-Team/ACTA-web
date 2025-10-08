@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Particles } from "@/components/magicui/particles";
+import { ShineBorder } from "@/components/magicui/shine-border";
 import DappCredentialCard from "@/components/DappCredentialCard";
 
 type VerifyResult = {
@@ -80,7 +81,7 @@ export default function DemoPage() {
           <div className="mb-8 text-center">
             <img src="/Acta-logo.png" alt="ACTA" className="mx-auto h-16 w-auto opacity-90" />
             <h1 className="mt-4 text-2xl sm:text-3xl font-bold">ACTA Demo</h1>
-            <p className="text-muted-foreground mt-2">Visualiza una credencial de ejemplo y verifícala contra la API.</p>
+            <p className="text-muted-foreground mt-2">View a sample credential and verify it against the API.</p>
           </div>
 
           <div className="flex flex-col items-center gap-6">
@@ -104,17 +105,20 @@ export default function DemoPage() {
               qrBackValue="https://acta.app/verify/cred_demo-1234-identity"
             />
 
-            <Card className="w-full max-w-3xl bg-card/40 border-white/10">
-              <CardHeader>
-                <CardTitle>Demo de verificación</CardTitle>
-                <CardDescription>Presiona verificar y consultamos la API de ACTA.</CardDescription>
-              </CardHeader>
-              <CardContent className="flex justify-center">
-                <Button onClick={handleVerify} disabled={loading} className="rounded-2xl h-12 px-6">
-                  {loading ? "Verificando…" : "Verificar"}
-                </Button>
-              </CardContent>
-            </Card>
+            <div className="relative w-full max-w-3xl">
+              <ShineBorder className="rounded-3xl" borderWidth={2} duration={16} shineColor={["#FFE9A8", "#F8D776", "#D7B154"]} />
+              <Card className="bg-[rgba(255,255,255,0.03)] border border-white/10 rounded-3xl relative">
+                <CardHeader>
+                  <CardTitle>Verification Demo</CardTitle>
+                  <CardDescription>Press Verify and we will query the ACTA API.</CardDescription>
+                </CardHeader>
+                <CardContent className="flex justify-center">
+                  <Button onClick={handleVerify} disabled={loading} className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-12 px-6 font-semibold">
+                    {loading ? "Verifying…" : "Verify"}
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -126,7 +130,7 @@ export default function DemoPage() {
           </DialogHeader>
 
           {!result && (
-            <div className="py-4 text-sm text-muted-foreground">Procesando solicitud…</div>
+            <div className="py-4 text-sm text-muted-foreground">Processing request…</div>
           )}
 
           {result && result.error && (

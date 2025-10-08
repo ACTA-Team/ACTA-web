@@ -104,9 +104,14 @@ export default function DappCredentialCard({
             {/* Right QR */}
             <div className="md:col-span-5 flex items-center justify-center">
               {qrFrontValue && (
-                <div className="rounded-xl p-4 bg-white/10">
-                  <QRCodeSVG value={qrFrontValue} level="M" includeMargin size={280} bgColor="transparent" fgColor="#ffffff" />
-                </div>
+                <QRCodeSVG
+                  value={qrFrontValue}
+                  level="M"
+                  includeMargin
+                  size={320}
+                  bgColor="transparent"
+                  fgColor="#ffffff"
+                />
               )}
             </div>
           </div>
@@ -133,7 +138,7 @@ export default function DappCredentialCard({
 
             <div className="md:col-span-5 flex items-center justify-center">
               {qrBackValue && (
-                <QRCodeSVG value={qrBackValue} level="M" size={220} bgColor="transparent" fgColor="#ffffff" />
+                <QRCodeSVG value={qrBackValue} level="M" size={240} bgColor="transparent" fgColor="#ffffff" />
               )}
             </div>
 
