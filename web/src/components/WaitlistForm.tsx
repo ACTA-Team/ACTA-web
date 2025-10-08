@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ShineBorder } from "@/components/magicui/shine-border";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mzzawvnn";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xyzndpdo";
 
 type Status = "idle" | "ok" | "error";
 
