@@ -36,16 +36,19 @@ export default function DemoPage() {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<VerifyResult | null>(null);
+  const [qrTxUrl, setQrTxUrl] = useState<string | null>(null);
 
   const ACTA_API =
     process.env.NEXT_PUBLIC_API_URL ||
     process.env.NEXT_PUBLIC_ACTA_API_URL ||
     "http://localhost:8000";
+  const STELLAR_NETWORK = process.env.NEXT_PUBLIC_STELLAR_NETWORK || "public";
 
   const handleVerify = async () => {
     setLoading(true);
     setOpen(true);
     setResult(null);
+    setQrTxUrl(null);
 
     try {
       // Construir payload similar al dApp-ACTA (API v2)
@@ -88,6 +91,10 @@ export default function DemoPage() {
         setResult({ error: message, details });
       } else {
         setResult(json as VerifyResult);
+        const tx = (json as VerifyResult)?.data?.transactionHash;
+        if (tx) {
+          setQrTxUrl(`https://stellar.expert/explorer/${STELLAR_NETWORK}/tx/${tx}`);
+        }
       }
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
@@ -130,25 +137,25 @@ export default function DemoPage() {
           <div className="flex justify-center">
             <div className="relative w-full max-w-[920px]">
               <div className="">
-                <DappCredentialCard
-                  title="ACTA Identity"
-                  front={{
-                    holder: "John Doe",
-                    issuedBy: "ACTA",
-                    issuedOn: "Jan 15, 2025",
-                    expiresOn: "12/25",
-                    category: "Identity",
-                  }}
-                  backFields={[
-                    { k: "Credential ID", v: "cred_demo-1234-identity" },
-                    { k: "Standard", v: "W3C Verifiable Credential 2.0" },
-                    { k: "Signature", v: "Ed25519 (Stellar)" },
-                    { k: "Status", v: "Active" },
-                    { k: "On-chain hash", v: "0x8f7a…b21c" },
-                  ]}
-                  qrFrontValue="https://acta.app/demo/credential/identity-demo"
-                  qrBackValue="https://acta.app/verify/cred_demo-1234-identity"
-                />
+              <DappCredentialCard
+                title="ACTA Identity"
+                front={{
+                  holder: "John Doe",
+                  issuedBy: "ACTA",
+                  issuedOn: "Jan 15, 2025",
+                  expiresOn: "12/25",
+                  category: "Identity",
+                }}
+                backFields={[
+                  { k: "Credential ID", v: "cred_demo-1234-identity" },
+                  { k: "Standard", v: "W3C Verifiable Credential 2.0" },
+                  { k: "Signature", v: "Ed25519 (Stellar)" },
+                  { k: "Status", v: "Active" },
+                  { k: "On-chain hash", v: "0x8f7a…b21c" },
+                ]}
+                qrFrontValue={qrTxUrl || ""}
+                qrBackValue="https://acta.app/verify/cred_demo-1234-identity"
+              />
               </div>
               <div className="mt-2 sm:mt-3 flex justify-start">
                 <div className="relative overflow-hidden rounded-2xl">
