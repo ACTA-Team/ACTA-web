@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import Aurora from "@/components/Aurora"
-import UseCasesCarousel from "@/components/UseCasesCarousel"
+import type React from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import posthog from "posthog-js";
+import Aurora from "@/components/Aurora";
+import UseCasesCarousel from "@/components/UseCasesCarousel";
 
-import Image from "next/image"
-import ScrollProgress from "@/components/ScrollProgress"
-import HowItWorks from "@/components/HowItWorks"
+import Image from "next/image";
+import ScrollProgress from "@/components/ScrollProgress";
+import HowItWorks from "@/components/HowItWorks";
 
-import FAQ from "@/components/FAQ"
-import ValueProposition from "@/components/ValueProposition"
-import ValuePropositionDetails from "@/components/ValueDetails"
-import ValueDetailsExtended from "@/components/ValueDetailsExtended"
-import { TextAnimate } from "@/components/magicui/text-animate"
-import Footer from "@/components/Footer"
-import { Particles } from "@/components/magicui/particles"
-import { ShineBorder } from "@/components/magicui/shine-border"
+import FAQ from "@/components/FAQ";
+import ValueProposition from "@/components/ValueProposition";
+import ValuePropositionDetails from "@/components/ValueDetails";
+import ValueDetailsExtended from "@/components/ValueDetailsExtended";
+import { TextAnimate } from "@/components/magicui/text-animate";
+import Footer from "@/components/Footer";
+import { Particles } from "@/components/magicui/particles";
+import { ShineBorder } from "@/components/magicui/shine-border";
 
-import AnimatedActa from "@/components/AnimatedActa"
-import WaitlistForm from "@/components/WaitlistForm"
-import FlipCredential from "@/components/FlipCredential"
-import HeroSubtitle from "@/components/HeroSubtitle"
+import AnimatedActa from "@/components/AnimatedActa";
+import WaitlistForm from "@/components/WaitlistForm";
+import FlipCredential from "@/components/FlipCredential";
+import HeroSubtitle from "@/components/HeroSubtitle";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6 },
-}
+};
 
 export default function ActaLanding() {
-
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ScrollProgress />
@@ -52,18 +52,16 @@ export default function ActaLanding() {
       </div>
 
       <nav className="relative z-10 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          
-        </div>
+        <div className="max-w-7xl mx-auto flex items-center justify-between"></div>
       </nav>
 
       <section className="relative z-10 isolate px-4 sm:px-6 py-12 sm:py-20 min-h-[85vh] md:min-h-[90vh] flex items-center">
         <div className="pointer-events-none absolute inset-0 z-0">
           {/* Logo difuminado de fondo */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <img 
-              src="/Acta-logo.png" 
-              alt="ACTA Logo Background" 
+            <img
+              src="/Acta-logo.png"
+              alt="ACTA Logo Background"
               className="w-96 h-96 object-contain opacity-30 blur-[3px] scale-220"
             />
           </div>
@@ -73,8 +71,7 @@ export default function ActaLanding() {
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 text-center">
           <div className="flex flex-col items-center gap-2 mb-12">
-            <AnimatedActa
-            />
+            <AnimatedActa />
           </div>
 
           <HeroSubtitle delay={0.15} />
@@ -85,15 +82,27 @@ export default function ActaLanding() {
             transition={{ delay: 0.3 }}
           >
             <div className="relative overflow-hidden rounded-2xl">
-              <ShineBorder shineColor={["#404040", "#808080", "#404040"]} borderWidth={1} />
-              <Button asChild className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40 w-full">
-                <a href="https://dapp-acta.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <ShineBorder
+                shineColor={["#404040", "#808080", "#404040"]}
+                borderWidth={1}
+              />
+              <Button
+                asChild
+                className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40 w-full"
+              >
+                <a
+                  href="https://dapp-acta.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    posthog.capture("demo_click", { source: "landing_cta" })
+                  }
+                >
                   Try our Demo!
                 </a>
               </Button>
             </div>
           </motion.div>
-
         </div>
       </section>
 
@@ -105,7 +114,7 @@ export default function ActaLanding() {
 
       <section className="relative z-10 px-4 sm:px-6 py-6 sm:py-14">
         <div className="relative max-w-6xl mx-auto">
-          <ValuePropositionDetails  />
+          <ValuePropositionDetails />
         </div>
       </section>
 
@@ -117,7 +126,10 @@ export default function ActaLanding() {
 
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16" {...fadeInUp}>
+          <motion.h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16"
+            {...fadeInUp}
+          >
             Use cases
           </motion.h2>
           <motion.div {...fadeInUp}>
@@ -128,7 +140,10 @@ export default function ActaLanding() {
 
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16" {...fadeInUp}>
+          <motion.h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16"
+            {...fadeInUp}
+          >
             How it works
           </motion.h2>
           <motion.div {...fadeInUp}>
@@ -137,15 +152,16 @@ export default function ActaLanding() {
         </div>
       </section>
 
-
-   
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-4xl mx-auto">
-          <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16" {...fadeInUp}>
+          <motion.h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16"
+            {...fadeInUp}
+          >
             Credential Demo
           </motion.h2>
           <motion.div className="flex justify-center" {...fadeInUp}>
-            <FlipCredential /> 
+            <FlipCredential />
           </motion.div>
         </div>
       </section>
@@ -156,11 +172,14 @@ export default function ActaLanding() {
             <WaitlistForm />
           </motion.div>
         </div>
-      </section> 
+      </section>
 
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-4xl mx-auto">
-          <motion.h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16" {...fadeInUp}>
+          <motion.h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16"
+            {...fadeInUp}
+          >
             Frequently asked questions
           </motion.h2>
           <motion.div {...fadeInUp}>
@@ -174,5 +193,5 @@ export default function ActaLanding() {
         <Footer />
       </footer>
     </div>
-  )
+  );
 }
