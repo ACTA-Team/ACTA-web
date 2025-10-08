@@ -1,0 +1,153 @@
+"use client";
+
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Particles } from "@/components/magicui/particles";
+import FlipCredential from "@/components/FlipCredential";
+
+type VerifyResult = {
+  success?: boolean;
+  data?: {
+    contractId: string;
+    hash: string;
+    transactionHash: string;
+    ledgerSequence: number;
+    createdAt: string;
+  };
+  error?: string;
+  details?: string;
+};
+
+export default function DemoPage() {
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<VerifyResult | null>(null);
+
+  const ACTA_API = process.env.NEXT_PUBLIC_ACTA_API_URL || "http://localhost:8000";
+
+  const handleVerify = async () => {
+    setLoading(true);
+    setOpen(true);
+    setResult(null);
+
+    try {
+      const payload = {
+        data: {
+          credentialSubject: {
+            id: "did:acta:demo123",
+            name: "Demo User",
+          },
+          type: ["VerifiableCredential", "DemoCredential"],
+          issuer: "Acta",
+        },
+        metadata: {
+          issuer: "Acta",
+          subject: "Demo User",
+          expirationDate: new Date(Date.now() + 31536000000).toISOString(),
+        },
+      };
+
+      const res = await fetch(`${ACTA_API}/credentials`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const json = await res.json();
+      if (!res.ok) {
+        setResult({ error: json?.error || "Request failed", details: json?.details });
+      } else {
+        setResult(json as VerifyResult);
+      }
+    } catch (e: any) {
+      setResult({ error: "Network error", details: String(e?.message || e) });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-[#1B1F2E]" />
+        <Particles className="absolute inset-0 z-0" quantity={60} staticity={40} ease={70} size={0.4} vx={0} vy={0} color="#ffffff" />
+      </div>
+
+      <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8 text-center">
+            <img src="/Acta-logo.png" alt="ACTA" className="mx-auto h-16 w-auto opacity-90" />
+            <h1 className="mt-4 text-2xl sm:text-3xl font-bold">ACTA Demo</h1>
+            <p className="text-muted-foreground mt-2">Visualiza una credencial de ejemplo y verifícala contra la API.</p>
+          </div>
+
+          <div className="flex flex-col items-center gap-6">
+            <FlipCredential />
+
+            <Card className="w-full max-w-3xl bg-card/40 border-white/10">
+              <CardHeader>
+                <CardTitle>Demo de verificación</CardTitle>
+                <CardDescription>Presiona verificar y consultamos la API de ACTA.</CardDescription>
+              </CardHeader>
+              <CardContent className="flex justify-center">
+                <Button onClick={handleVerify} disabled={loading} className="rounded-2xl h-12 px-6">
+                  {loading ? "Verificando…" : "Verificar"}
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Chaincert verification</DialogTitle>
+          </DialogHeader>
+
+          {!result && (
+            <div className="py-4 text-sm text-muted-foreground">Procesando solicitud…</div>
+          )}
+
+          {result && result.error && (
+            <div className="space-y-3">
+              <div className="text-sm">Issuer: <span className="text-white/80">Acta</span></div>
+              <div className="text-sm">Recipient: <span className="text-white/80">Demo User</span></div>
+              <div className="text-sm">Blockchain: <span className="text-white/80">Stellar / Testnet</span></div>
+              <div className="mt-4 rounded-md border border-destructive/30 bg-destructive/10 p-3 text-destructive text-sm">
+                Something went wrong while searching the transaction. Please try again later.
+                {result.details ? (
+                  <div className="mt-2 text-xs opacity-80">{result.details}</div>
+                ) : null}
+              </div>
+            </div>
+          )}
+
+          {result && result.success && result.data && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <Field k="Issuer" v="Acta" />
+              <Field k="Recipient" v="Demo User" />
+              <Field k="Blockchain" v="Stellar / Testnet" />
+              <Field k="Issuance contract" v={result.data.contractId} />
+              <Field k="Hash" v={result.data.hash} />
+              <Field k="Transaction" v={result.data.transactionHash} />
+              <Field k="Ledger sequence" v={String(result.data.ledgerSequence)} />
+              <Field k="Created at" v={new Date(result.data.createdAt).toLocaleString()} />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
+function Field({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="rounded-lg bg-white/5 px-4 py-3 border border-white/10 break-all">
+      <div className="uppercase tracking-wide text-white/60 text-xs">{k}</div>
+      <div className="mt-1">{v}</div>
+    </div>
+  );
+}
