@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
 import { ShineBorder } from "@/components/magicui/shine-border";
@@ -38,19 +38,33 @@ export default function DappCredentialCard({
   // Simple responsive scale for QR and fonts
   const baseW = 920;
   const scale = useMemo(() => 1, []);
-  const titleSize = `clamp(16px, ${28 * scale}px, 34px)`;
-  const detailsSize = `clamp(13px, ${18 * scale}px, 20px)`;
-  const disclaimerSize = `clamp(10px, ${12 * scale}px, 14px)`;
+  // viewport-dependent font sizing (smaller on móvil)
+  const [vw, setVw] = useState<number>(1024);
+  useEffect(() => {
+    const update = () => setVw(typeof window !== "undefined" ? window.innerWidth : 1024);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  const isMobile = vw < 640;
+  const titleSize = isMobile ? `22px` : `clamp(16px, ${28 * scale}px, 34px)`;
+  const detailsSize = isMobile ? `15px` : `clamp(13px, ${18 * scale}px, 20px)`;
+  const disclaimerSize = isMobile ? `12px` : `clamp(10px, ${12 * scale}px, 14px)`;
+
+  // Responsive QR size based on viewport
+  const qrFrontSize = vw < 640 ? 200 : 320;
+  const qrBackSize = vw < 640 ? 160 : 240;
+  const mobileHeight = 640; // altura suficiente para evitar corte en móviles
 
   return (
-    <div className="relative mx-auto rounded-2xl" style={{ perspective: 1200 }}>
+    <div className="relative mx-auto rounded-2xl w-full" style={{ perspective: 1200 }}>
       <motion.div
         role="button"
         tabIndex={0}
         aria-pressed={flipped}
         onClick={toggle}
         className="relative select-none rounded-2xl shadow-xl cursor-pointer border border-[#F0E7CC]/30 inline-block"
-        style={{ width: `min(${baseW}px, 92vw)`, aspectRatio: "16 / 9", transformStyle: "preserve-3d", willChange: "transform", contain: "layout paint" }}
+        style={{ width: `min(${baseW}px, 100%)`, height: isMobile ? `${mobileHeight}px` : undefined, aspectRatio: isMobile ? undefined : "16 / 9", transformStyle: "preserve-3d", willChange: "transform", contain: "layout paint" }}
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ type: "spring", stiffness: 120, damping: 14, mass: 0.8 }}
       >
@@ -78,11 +92,11 @@ export default function DappCredentialCard({
             <img
               src="/Acta-logo.png"
               alt=""
-              className="absolute left-[-160px] top-1/2 -translate-y-1/2 h-[680px] md:h-[720px] opacity-[0.08] saturate-0 rotate-0"
+              className="absolute left-[-160px] top-1/2 -translate-y-1/2 h-[680px] md:h-[720px] opacity-[0.08] saturate-0 rotate-0 hidden md:block"
             />
           </div>
 
-          <div className="relative h-full w-full grid grid-cols-1 md:grid-cols-12 gap-4 p-6">
+          <div className="relative h-full w-full grid grid-cols-1 md:grid-cols-12 gap-4 p-4 md:p-6">
             {/* Left info */}
             <div className="md:col-span-7 flex flex-col">
               <div className="flex items-center gap-3">
@@ -98,30 +112,32 @@ export default function DappCredentialCard({
                 <p><span className="text-white/80">Category:</span> {front.category}</p>
               </div>
 
-              <div className="mt-auto pt-4 flex items-center justify-between">
+              {/* Verified visible en desktop; oculto en móvil */}
+              <div className="mt-auto pt-4 hidden md:flex items-center">
                 <div className="flex items-center gap-2">
                   <span className="inline-flex items-center justify-center h-5 w-5 rounded-full border border-white/20 bg-white/10">✓</span>
                   <span className="text-sm">Verified</span>
                 </div>
-                <p className="italic text-white/80" style={{ fontSize: disclaimerSize }}>
-                  *Demo credential; no legal validity*
-                </p>
               </div>
             </div>
 
             {/* Right QR */}
-            <div className="md:col-span-5 flex items-center justify-center">
+            <div className="md:col-span-5 flex flex-col items-center md:items-end justify-center">
               {qrFrontValue && (
                 <QRCodeSVG
                   value={qrFrontValue}
                   level="M"
                   includeMargin
-                  size={320}
+                  size={qrFrontSize}
                   bgColor="transparent"
                   fgColor="#ffffff"
                 />
               )}
             </div>
+            {/* Disclaimer global: esquina inferior derecha del card (solo desktop) */}
+            <p className="hidden md:block absolute bottom-4 right-6 text-right italic text-white/80" style={{ fontSize: disclaimerSize }}>
+              *Demo credential; no legal validity*
+            </p>
           </div>
         </div>
 
@@ -132,7 +148,7 @@ export default function DappCredentialCard({
         >
           <div className="absolute inset-0" style={{ background: "linear-gradient(145deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95))" }} />
 
-          <div className="relative h-full w-full grid grid-cols-1 md:grid-cols-12 gap-4 p-6">
+          <div className="relative h-full w-full grid grid-cols-1 md:grid-cols-12 gap-4 p-4 md:p-6">
             <div className="md:col-span-7">
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3" style={{ fontSize: detailsSize }}>
                 {backFields.map((f) => (
@@ -146,7 +162,7 @@ export default function DappCredentialCard({
 
             <div className="md:col-span-5 flex items-center justify-center">
               {qrBackValue && (
-                <QRCodeSVG value={qrBackValue} level="M" size={240} bgColor="transparent" fgColor="#ffffff" />
+                <QRCodeSVG value={qrBackValue} level="M" size={qrBackSize} bgColor="transparent" fgColor="#ffffff" />
               )}
             </div>
 

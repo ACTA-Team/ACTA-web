@@ -128,7 +128,7 @@ export default function DemoPage() {
           </div>
 
           <div className="flex justify-center">
-            <div className="relative w-fit">
+            <div className="relative w-full max-w-[920px]">
               <div className="">
                 <DappCredentialCard
                   title="ACTA Identity"
@@ -150,14 +150,20 @@ export default function DemoPage() {
                   qrBackValue="https://acta.app/verify/cred_demo-1234-identity"
                 />
               </div>
-              <div className="mt-4 sm:mt-6 flex justify-start">
-                <Button
-                  onClick={handleVerify}
-                  disabled={loading}
-                  className="rounded-2xl h-12 px-6 font-semibold text-black bg-gradient-to-br from-[#FFE9A8] via-[#F8D776] to-[#D7B154] shadow-lg shadow-[#D7B154]/30 hover:brightness-105"
-                >
-                  {loading ? "Verificando…" : "Verificar"}
-                </Button>
+              <div className="mt-2 sm:mt-3 flex justify-start">
+                <div className="relative overflow-hidden rounded-2xl">
+                  <ShineBorder
+                    shineColor={["#404040", "#808080", "#404040"]}
+                    borderWidth={1}
+                  />
+                  <Button
+                    onClick={handleVerify}
+                    disabled={loading}
+                    className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40"
+                  >
+                    {loading ? "Verificando…" : "Verificar"}
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
