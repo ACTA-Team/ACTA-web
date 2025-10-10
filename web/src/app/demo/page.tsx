@@ -95,7 +95,7 @@ export default function DemoPage() {
       if (!res.ok) {
         const isPublicApi = /api\.acta\.build/.test(ACTA_API);
         const hint = isPublicApi
-          ? "Public API no puede almacenar credenciales sin backend configurado"
+          ? "Public API cannot store credentials without a configured backend"
           : undefined;
         const message = json?.message || json?.error || "Request failed";
         const details = json?.details || hint || `HTTP ${res.status}`;
@@ -109,7 +109,7 @@ export default function DemoPage() {
       }
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
-      setResult({ error: "Error de red", details: msg });
+      setResult({ error: "Network error", details: msg });
     } finally {
       setLoading(false);
     }
@@ -212,7 +212,7 @@ export default function DemoPage() {
                     disabled={loading}
                     className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40"
                   >
-                    {loading ? "Verificando…" : "Verificar"}
+                    {loading ? "Verifying…" : "Verify"}
                   </Button>
                 </div>
               </motion.div>
