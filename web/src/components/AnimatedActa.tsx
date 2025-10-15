@@ -2,7 +2,7 @@
 
 import React from "react";
 import clsx from "clsx";
-import { TextAnimate } from "@/components/magicui/text-animate";
+import { TextAnimate } from "@/components/ui/text-animate";
 
 
 type MeltingWordProps = {

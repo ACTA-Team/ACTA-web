@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
+import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 16 },

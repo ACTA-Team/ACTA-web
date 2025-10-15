@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ShineBorder } from "@/components/magicui/shine-border";
+import { ShineBorder } from "@/components/ui/shine-border";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xyzndpdo";
 

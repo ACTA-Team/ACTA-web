@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
-import { ShineBorder } from "@/components/magicui/shine-border";
+import { ShineBorder } from "@/components/ui/shine-border";
 
 type FrontFields = {
   holder: string;

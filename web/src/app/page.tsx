@@ -14,10 +14,10 @@ import FAQ from "@/components/FAQ";
 import ValueProposition from "@/components/ValueProposition";
 import ValuePropositionDetails from "@/components/ValueDetails";
 import ValueDetailsExtended from "@/components/ValueDetailsExtended";
-import { TextAnimate } from "@/components/magicui/text-animate";
+import { TextAnimate } from "@/components/ui/text-animate";
 import Footer from "@/components/Footer";
-import { Particles } from "@/components/magicui/particles";
-import { ShineBorder } from "@/components/magicui/shine-border";
+import { Particles } from "@/components/ui/particles";
+import { ShineBorder } from "@/components/ui/shine-border";
 import { usePostHog } from "posthog-js/react";
 
 import AnimatedActa from "@/components/AnimatedActa";

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Marquee } from "@/components/magicui/marquee"; // MagicUI component
+import { Marquee } from "@/components/ui/marquee"; // MagicUI component
 import {
   BadgeCheck,
   Briefcase,

@@ -10,7 +10,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { TextAnimate } from "@/components/magicui/text-animate";
+import { TextAnimate } from "@/components/ui/text-animate";
 import { ShieldCheck, Webhook, CheckCircle2 } from "lucide-react";
 
 const fadeInUp = {
