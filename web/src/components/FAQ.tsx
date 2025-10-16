@@ -4,11 +4,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const faqData = [
   {
     question: "What goes on-chain?",
-    answer: "Only the hash + status. Your sensitive data stays encrypted off-chain for privacy.",
+    answer: "Your credential its safely stored on the Stellar Blockchain.",
   },
   {
     question: "Do I need blockchain knowledge?",
-    answer: "No, use our API/SDK. We handle all the blockchain complexity for you.",
+    answer: "No, only create a Wallet and we handle all the blockchain complexity for you.",
   },
   {
     question: "Are there templates available?",

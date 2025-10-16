@@ -10,25 +10,12 @@ const fadeInUp = {
 };
 const stagger = { animate: { transition: { staggerChildren: 0.08 } } };
 
-type Feature = { title: string; desc: string };
+type Feature = { title: string };
 
 const FEATURES: Feature[] = [
-  {
-    title: "Privacy by design",
-    desc: "No PII on-chain; only hash + state. Data encrypted off-chain.",
-  },
-  {
-    title: "Deterministic proofs",
-    desc: "JCS + SHA-256 → same content = same hash. Objective verification.",
-  },
-  {
-    title: "1-click verification",
-    desc: "Embeddable widget + public portal. No extra integration to verify.",
-  },
-  {
-    title: "Verifiable by anyone",
-    desc: "Provider-independent: public verification against the chain.",
-  },
+  { title: "Privacy by design" },
+  { title: "One click verification" },
+  { title: "Verifiable by anyone" },
 ];
 
 export default function ValueProposition() {
@@ -57,11 +44,11 @@ export default function ValueProposition() {
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "0px 0px -80px 0px" }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
       >
         {FEATURES.map((f, i) => (
           <motion.div key={i} variants={fadeInUp}>
-            <FeatureCard title={f.title} desc={f.desc} />
+            <FeatureCard title={f.title} />
           </motion.div>
         ))}
       </motion.div>
@@ -70,7 +57,7 @@ export default function ValueProposition() {
 }
 
 /** Card styled like the reference screenshot */
-function FeatureCard({ title, desc }: Feature) {
+function FeatureCard({ title }: Feature) {
   return (
     <div
       className={[
@@ -100,11 +87,6 @@ function FeatureCard({ title, desc }: Feature) {
         {title}
       </h3>
 
-      <p className="mx-auto max-w-[32ch] text-sm sm:text-base leading-relaxed text-white/85">
-        {desc}
-      </p>
-
-      {/* soft inner vignette */}
       <div className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_0_0_60px_rgba(255,255,255,0.03)]" />
     </div>
   );

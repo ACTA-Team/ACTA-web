@@ -38,8 +38,7 @@ export default function ActaLanding() {
       <ScrollProgress />
 
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-[#1B1F2E]" />
-        {/* <Aurora /> */}
+        <div className="absolute inset-0 " />
         <Particles
           className="absolute inset-0 z-0"
           quantity={60}
@@ -58,7 +57,7 @@ export default function ActaLanding() {
 
       <section className="relative z-10 isolate px-4 sm:px-6 py-12 sm:py-20 min-h-[85vh] md:min-h-[90vh] flex items-center">
         <div className="pointer-events-none absolute inset-0 z-0">
-          {/* Logo difuminado de fondo */}
+          {/* Logo difuminado */}
           <div className="absolute inset-0 flex items-center justify-center">
             <img
               src="/Acta-logo.png"
@@ -92,7 +91,7 @@ export default function ActaLanding() {
                 className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40 w-full"
               >
                 <a
-                  href="/demo"
+                  href="//demo.acta.build"
                   onClick={() =>
                     ph?.capture("clicked_try_demo", {
                       location: "landing_page",
@@ -153,7 +152,7 @@ export default function ActaLanding() {
         </div>
       </section>
 
-      <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
+      {/* <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-16"
@@ -165,7 +164,7 @@ export default function ActaLanding() {
             <FlipCredential />
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-20">
         <div className="max-w-2xl mx-auto">

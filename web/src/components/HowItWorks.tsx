@@ -144,12 +144,11 @@ export default function HowItWorks() {
       icon: <Globe className="h-5 w-5" />,
       title: "Issuer emits credential",
       description:
-        "Issuer calls our API/Panel using a template. We canonicalize and hash the payload.",
+        "Issuer calls our API or use our dAppp. We canonicalize and hash the payload.",
       bullets: [
         "Template → VC JSON (no volatile fields).",
-        "JCS canonicalization → SHA-256 = content_hash.",
-        "VC encrypted (AES-GCM) in Supabase Storage.",
-        "We return verify link + QR (capability token).",
+        "Content Secure and protected against tampering.",
+        "We return verify link + QR code.",
       ],
       snippet: `POST /v1/credentials
 {
@@ -174,34 +173,34 @@ export default function HowItWorks() {
     {
       step: "2",
       icon: <Link2 className="h-5 w-5" />,
-      title: "Hash anchored on Stellar",
+      title: "Credential anchored on Stellar",
       description:
-        "Only hash + status go on-chain via Soroban. No PII, no heavy data.",
+        "We publish the credential on Stellar Blockchain without sensitive PII.",
       bullets: [
-        "We publish {hash, statusRef} in Soroban contract.",
-        "Zero PII on-chain. Minimal costs and latency.",
-        "Indexer listens to events → caches state in DB.",
-        "We return txId and 'View on Stellar' link.",
+        "Selective disclosure",
+        "Minimal costs and latency.",
+        "We make issuing credentials on the Stellar blockchain simple.",
       ],
       snippet: `On-chain record (conceptual)
 {
-  "credentialId": "cred_24f9",
-  "hash": "0xa3f8...e91",
+  "id": "cred_3732",
+  "issuer": "did:pkh:stellar:testnet:GCPZYT...",
+  "subject": "did:example:ebfeb1f712e...",
   "status": "Active",
-  "txId": "6b1d9a..."
-}`,
+  "proof": "Ed25519Signature2020"
+}
+`,
     },
     {
       step: "3",
       icon: <ShieldCheck className="h-5 w-5" />,
       title: "Anyone verifies instantly",
       description:
-        "Portal & widget recompute hash server-side and compare with the chain.",
+        "Our dApp reader verifies the credential against the Stellar Blockchain.",
       bullets: [
-        "We retrieve encrypted VC → decrypt on server.",
-        "Re-JCS + SHA-256 and compare with on-chain.",
+        "No account needed",
+        "The holder desides wich PII to disclose.",
         "We show ✔/⚠/✖ and metadata (issuer, type, tx).",
-        "Embeddable widget + Verifier Portal (public).",
       ],
       snippet: `GET /v1/verify/cred_24f9
 {
