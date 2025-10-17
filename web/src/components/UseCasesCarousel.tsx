@@ -27,30 +27,110 @@ import {
 // Data
 // ---------------------------------------------
 const cases = [
-  { Icon: HeartHandshake, title: "Donation Delivered", desc: "Donation processed and delivered." },
-  { Icon: Fingerprint, title: "Identity Proof Linked", desc: "Links verified account/DID (basic)." },
-  { Icon: Cpu, title: "Model Provenance", desc: "AI: signed and traceable weights/training." },
-  { Icon: FileCheck2, title: "Escrow Completed", desc: "Prove an escrow settled successfully." },
-  { Icon: BadgeCheck, title: "Grant Delivered", desc: "Attest deliveries tied to grants." },
-  { Icon: LockKeyhole, title: "KYC Verified", desc: "Share-only-the-proof, not the PII." },
-  { Icon: UsersRound, title: "Participation Badge", desc: "Events, hackathons, courses." },
-  { Icon: Receipt, title: "Invoice Paid", desc: "Verifiable proof of paid invoice." },
-  { Icon: Flag, title: "Milestone Completed", desc: "Milestone delivered and approved with tx/date." },
-  { Icon: FileSignature, title: "Contract Signed / NDA", desc: "Signed document hash + status." },
-  { Icon: Bug, title: "Bug Bounty Paid", desc: "Bounty payment confirmed, no disputes." },
-  { Icon: Briefcase, title: "Employment Verified", desc: "Proof of employment/role without exposing PII." },
-  { Icon: GraduationCap, title: "Certification Earned", desc: "Course or exam passed (expirable)." },
-  { Icon: ShieldCheck, title: "Release Attestation", desc: "Published version checksums/signatures." },
-  { Icon: Database, title: "Data Snapshot", desc: "Dataset/log integrity with public hash." },
-  { Icon: PackageCheck, title: "Supply Checkpoint", desc: "Batch scan and status at each stage." },
-  { Icon: Truck, title: "Delivery Confirmed", desc: "Delivery received with who/when/where." },
-  { Icon: Leaf, title: "Carbon Credit Retired", desc: "CO₂ retirement/offset certificate." },
+  {
+    Icon: HeartHandshake,
+    title: "Donation Delivered",
+    desc: "Donation processed and delivered.",
+  },
+  {
+    Icon: Fingerprint,
+    title: "Identity Proof Linked",
+    desc: "Links verified account/DID (basic).",
+  },
+  {
+    Icon: Cpu,
+    title: "Model Provenance",
+    desc: "AI: signed and traceable weights/training.",
+  },
+  {
+    Icon: FileCheck2,
+    title: "Escrow Completed",
+    desc: "Prove an escrow settled successfully.",
+  },
+  {
+    Icon: BadgeCheck,
+    title: "Grant Delivered",
+    desc: "Attest deliveries tied to grants.",
+  },
+  {
+    Icon: LockKeyhole,
+    title: "KYC Verified",
+    desc: "Share-only-the-proof, not the PII.",
+  },
+  {
+    Icon: UsersRound,
+    title: "Participation Badge",
+    desc: "Events, hackathons, courses.",
+  },
+  {
+    Icon: Receipt,
+    title: "Invoice Paid",
+    desc: "Verifiable proof of paid invoice.",
+  },
+  {
+    Icon: Flag,
+    title: "Milestone Completed",
+    desc: "Milestone delivered and approved with tx/date.",
+  },
+  {
+    Icon: FileSignature,
+    title: "Contract Signed / NDA",
+    desc: "Signed document hash + status.",
+  },
+  {
+    Icon: Bug,
+    title: "Bug Bounty Paid",
+    desc: "Bounty payment confirmed, no disputes.",
+  },
+  {
+    Icon: Briefcase,
+    title: "Employment Verified",
+    desc: "Proof of employment/role without exposing PII.",
+  },
+  {
+    Icon: GraduationCap,
+    title: "Certification Earned",
+    desc: "Course or exam passed (expirable).",
+  },
+  {
+    Icon: ShieldCheck,
+    title: "Release Attestation",
+    desc: "Published version checksums/signatures.",
+  },
+  {
+    Icon: Database,
+    title: "Data Snapshot",
+    desc: "Dataset/log integrity with public hash.",
+  },
+  {
+    Icon: PackageCheck,
+    title: "Supply Checkpoint",
+    desc: "Batch scan and status at each stage.",
+  },
+  {
+    Icon: Truck,
+    title: "Delivery Confirmed",
+    desc: "Delivery received with who/when/where.",
+  },
+  {
+    Icon: Leaf,
+    title: "Carbon Credit Retired",
+    desc: "CO₂ retirement/offset certificate.",
+  },
 ];
 
 // ---------------------------------------------
 // Card
 // ---------------------------------------------
-function CaseCard({ Icon, title, desc }: { Icon: React.ComponentType<{ className?: string }>; title: string; desc: string }) {
+function CaseCard({
+  Icon,
+  title,
+  desc,
+}: {
+  Icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="min-w-[260px] sm:min-w-[280px] rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm flex-shrink-0">
       <Icon className="mb-3 h-6 w-6 text-white/70" />
@@ -112,7 +192,10 @@ export default function UseCasesCarousel({
   return (
     <div
       className={`relative mx-auto max-w-6xl overflow-hidden ${className}`}
-      style={{ WebkitMaskImage: "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)" }}
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)",
+      }}
     >
       {/* Row A (slower) */}
       <Marquee
@@ -145,4 +228,3 @@ export default function UseCasesCarousel({
     </div>
   );
 }
-

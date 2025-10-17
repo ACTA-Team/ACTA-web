@@ -15,7 +15,10 @@ interface MousePoint {
 }
 
 function useMousePosition(): MousePoint {
-  const [mousePosition, setMousePosition] = useState<MousePoint>({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState<MousePoint>({
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -30,19 +33,23 @@ function useMousePosition(): MousePoint {
 
 interface ParticlesProps extends ComponentPropsWithoutRef<"div"> {
   className?: string;
-  quantity?: number;   // number of particles
-  staticity?: number;  // 0–100 (higher = less parallax)
-  ease?: number;       // 0–100 (higher = follows pointer faster)
-  size?: number;       // base radius in px
-  refresh?: boolean;   // reseed/manual redraw
-  color?: string;      // hex (#fff, #ffffff)
-  vx?: number;         // px/sec in X
-  vy?: number;         // px/sec in Y
+  quantity?: number; // number of particles
+  staticity?: number; // 0–100 (higher = less parallax)
+  ease?: number; // 0–100 (higher = follows pointer faster)
+  size?: number; // base radius in px
+  refresh?: boolean; // reseed/manual redraw
+  color?: string; // hex (#fff, #ffffff)
+  vx?: number; // px/sec in X
+  vy?: number; // px/sec in Y
 }
 
 function hexToRgb(hex: string): number[] {
   hex = hex.replace("#", "");
-  if (hex.length === 3) hex = hex.split("").map((c) => c + c).join("");
+  if (hex.length === 3)
+    hex = hex
+      .split("")
+      .map(c => c + c)
+      .join("");
   const hexInt = parseInt(hex, 16);
   const red = (hexInt >> 16) & 255;
   const green = (hexInt >> 8) & 255;
@@ -87,7 +94,10 @@ export const Particles: React.FC<ParticlesProps> = ({
   const resizeTimeout = useRef<number | null>(null);
 
   // ease: 0–100 -> 0.01..0.05 (reduced for less movement)
-  const follow = useMemo(() => 0.01 + Math.min(Math.max(ease, 0), 100) * 0.0004, [ease]);
+  const follow = useMemo(
+    () => 0.01 + Math.min(Math.max(ease, 0), 100) * 0.0004,
+    [ease]
+  );
 
   const rgb = useMemo(() => hexToRgb(color), [color]);
 
@@ -140,13 +150,20 @@ export const Particles: React.FC<ParticlesProps> = ({
   };
 
   const resizeCanvas = () => {
-    if (!canvasContainerRef.current || !canvasRef.current || !context.current) return;
+    if (!canvasContainerRef.current || !canvasRef.current || !context.current)
+      return;
 
     canvasSize.current.w = canvasContainerRef.current.offsetWidth;
     canvasSize.current.h = canvasContainerRef.current.offsetHeight;
 
-    canvasRef.current.width = Math.max(1, Math.floor(canvasSize.current.w * dpr));
-    canvasRef.current.height = Math.max(1, Math.floor(canvasSize.current.h * dpr));
+    canvasRef.current.width = Math.max(
+      1,
+      Math.floor(canvasSize.current.w * dpr)
+    );
+    canvasRef.current.height = Math.max(
+      1,
+      Math.floor(canvasSize.current.h * dpr)
+    );
     canvasRef.current.style.width = `${canvasSize.current.w}px`;
     canvasRef.current.style.height = `${canvasSize.current.h}px`;
 
@@ -159,13 +176,24 @@ export const Particles: React.FC<ParticlesProps> = ({
     const y = Math.floor(Math.random() * canvasSize.current.h);
     const translateX = 0;
     const translateY = 0;
-    const pSize = Math.floor(Math.random() * 2) + size;       // ~[size, size+1]
+    const pSize = Math.floor(Math.random() * 2) + size; // ~[size, size+1]
     const alpha = 0;
     const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1)); // 0.1–0.7
-    const dx = (Math.random() - 0.5) * 0.1;                   // drift leve
+    const dx = (Math.random() - 0.5) * 0.1; // drift leve
     const dy = (Math.random() - 0.5) * 0.1;
-    const magnetism = 0.5 + Math.random() * 2;                // reduced parallax variation
-    return { x, y, translateX, translateY, size: pSize, alpha, targetAlpha, dx, dy, magnetism };
+    const magnetism = 0.5 + Math.random() * 2; // reduced parallax variation
+    return {
+      x,
+      y,
+      translateX,
+      translateY,
+      size: pSize,
+      alpha,
+      targetAlpha,
+      dx,
+      dy,
+      magnetism,
+    };
   };
 
   const clearContext = () => {
@@ -193,7 +221,8 @@ export const Particles: React.FC<ParticlesProps> = ({
 
   const drawParticles = () => {
     clearContext();
-    for (let i = 0; i < circles.current.length; i++) drawCircle(circles.current[i]);
+    for (let i = 0; i < circles.current.length; i++)
+      drawCircle(circles.current[i]);
   };
 
   const remapValue = (
@@ -201,9 +230,10 @@ export const Particles: React.FC<ParticlesProps> = ({
     start1: number,
     end1: number,
     start2: number,
-    end2: number,
+    end2: number
   ): number => {
-    const remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
+    const remapped =
+      ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
     return remapped > 0 ? remapped : 0;
   };
 
@@ -222,10 +252,13 @@ export const Particles: React.FC<ParticlesProps> = ({
         canvasSize.current.h - circle.y - circle.translateY - circle.size,
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-      const remapClosestEdge = parseFloat(remapValue(closestEdge, 0, 20, 0, 1).toFixed(2));
+      const remapClosestEdge = parseFloat(
+        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
+      );
       if (remapClosestEdge > 1) {
         circle.alpha += 0.02;
-        if (circle.alpha > circle.targetAlpha) circle.alpha = circle.targetAlpha;
+        if (circle.alpha > circle.targetAlpha)
+          circle.alpha = circle.targetAlpha;
       } else {
         circle.alpha = circle.targetAlpha * remapClosestEdge;
       }
@@ -236,8 +269,10 @@ export const Particles: React.FC<ParticlesProps> = ({
 
       // Parallax towards pointer (high ease = faster response)
       const denom = Math.max(1, staticity / circle.magnetism);
-      circle.translateX += (mouse.current.x / denom - circle.translateX) * follow;
-      circle.translateY += (mouse.current.y / denom - circle.translateY) * follow;
+      circle.translateX +=
+        (mouse.current.x / denom - circle.translateX) * follow;
+      circle.translateY +=
+        (mouse.current.y / denom - circle.translateY) * follow;
 
       drawCircle(circle);
 

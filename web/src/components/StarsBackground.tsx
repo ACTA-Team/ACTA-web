@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { useEffect, useState, useMemo, memo } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useState, useMemo, memo } from "react";
+import { motion } from "framer-motion";
 
-const SLOWDOWN = 3 // 1 = same; >1 = slower; <1 = faster
+const SLOWDOWN = 3; // 1 = same; >1 = slower; <1 = faster
 
 const StarsBackground = memo(() => {
-  const [screenSize, setScreenSize] = useState({ width: 0, height: 0 })
-  const [isClient, setIsClient] = useState(false)
+  const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true)
+    setIsClient(true);
     if (typeof window !== "undefined") {
-      setScreenSize({ width: window.innerWidth, height: window.innerHeight })
+      setScreenSize({ width: window.innerWidth, height: window.innerHeight });
     }
-  }, [])
+  }, []);
 
   const stars = useMemo(() => {
-    if (!isClient) return []
+    if (!isClient) return [];
 
     return Array.from({ length: 120 }, (_, i) => ({
       id: i,
@@ -28,14 +28,14 @@ const StarsBackground = memo(() => {
       duration: (Math.random() * 12 + 8) * SLOWDOWN, // now slower
       delay: Math.random() * 20, // you can increase it a bit if you want more "pauses"
       opacity: Math.random() * 0.7 + 0.3,
-    }))
-  }, [isClient])
+    }));
+  }, [isClient]);
 
-  if (!isClient) return null
+  if (!isClient) return null;
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {stars.map((star) => (
+      {stars.map(star => (
         <motion.div
           key={star.id}
           className="absolute bg-white rounded-full"
@@ -60,8 +60,8 @@ const StarsBackground = memo(() => {
         />
       ))}
     </div>
-  )
-})
+  );
+});
 
-StarsBackground.displayName = "StarsBackground"
-export default StarsBackground
+StarsBackground.displayName = "StarsBackground";
+export default StarsBackground;

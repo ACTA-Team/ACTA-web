@@ -1,5 +1,10 @@
 "use client";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const faqData = [
   {
@@ -8,7 +13,8 @@ const faqData = [
   },
   {
     question: "Do I need blockchain knowledge?",
-    answer: "No, only create a Wallet and we handle all the blockchain complexity for you.",
+    answer:
+      "No, only create a Wallet and we handle all the blockchain complexity for you.",
   },
   {
     question: "Are there templates available?",
@@ -17,7 +23,8 @@ const faqData = [
   },
   {
     question: "Is verification public?",
-    answer: "Yes, via link or widget. Anyone can verify credentials without needing special access.",
+    answer:
+      "Yes, via link or widget. Anyone can verify credentials without needing special access.",
   },
   {
     question: "What about pricing?",
@@ -33,19 +40,19 @@ const faqData = [
 
 export default function FAQ() {
   return (
-    <Accordion
-      type="single"
-      collapsible
-      className="space-y-4"
-    >
+    <Accordion type="single" collapsible className="space-y-4">
       {faqData.map((faq, index) => (
         <AccordionItem
           key={index}
           value={`item-${index}`}
           className="bg-card/30 rounded-xl border-border/50 px-6"
         >
-          <AccordionTrigger className="text-left hover:no-underline">{faq.question}</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">{faq.answer}</AccordionContent>
+          <AccordionTrigger className="text-left hover:no-underline">
+            {faq.question}
+          </AccordionTrigger>
+          <AccordionContent className="text-muted-foreground">
+            {faq.answer}
+          </AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>

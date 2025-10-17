@@ -10,13 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-import {
-  Database,
-  FileText,
-  Wrench,
-  Unlink,
-  Info,
-} from "lucide-react";
+import { Database, FileText, Wrench, Unlink, Info } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -69,9 +63,12 @@ export default function ValueDetailsExtended() {
               pain: "Depend 100% on issuer; little public traceability.",
               win: "Public anchoring on Stellar: anyone can verify.",
             },
-          ].map((a) => (
+          ].map(a => (
             <Accordion key={a.value} type="single" collapsible>
-              <AccordionItem value={a.value} className="rounded-xl border border-white/10 bg-white/5 px-3">
+              <AccordionItem
+                value={a.value}
+                className="rounded-xl border border-white/10 bg-white/5 px-3"
+              >
                 <AccordionTrigger className="text-left">
                   <div className="flex items-center gap-2">
                     {a.icon}
@@ -102,15 +99,28 @@ export default function ValueDetailsExtended() {
           <div className="flex items-start gap-4">
             <Info className="mt-1 h-6 w-6 text-white/70 flex-shrink-0" />
             <div className="space-y-3">
-              <p className="font-semibold text-white text-base">&ldquo;Zero databases&rdquo; — what we mean</p>
+              <p className="font-semibold text-white text-base">
+                &ldquo;Zero databases&rdquo; — what we mean
+              </p>
               <p className="text-white/70 leading-relaxed">
-                You don&apos;t need to run a database for credentials. Acta manages encrypted storage
-                and on-chain state; your app can be stateless (store only the <code className="bg-white/10 px-1.5 py-0.5 rounded text-white">credentialId</code>).
+                You don&apos;t need to run a database for credentials. Acta
+                manages encrypted storage and on-chain state; your app can be
+                stateless (store only the{" "}
+                <code className="bg-white/10 px-1.5 py-0.5 rounded text-white">
+                  credentialId
+                </code>
+                ).
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
-                <Badge className="bg-white/10 text-white border-white/20">Hash on-chain</Badge>
-                <Badge className="bg-white/10 text-white border-white/20">Data off-chain</Badge>
-                <Badge className="bg-white/10 text-white border-white/20">Verifiable by anyone</Badge>
+                <Badge className="bg-white/10 text-white border-white/20">
+                  Hash on-chain
+                </Badge>
+                <Badge className="bg-white/10 text-white border-white/20">
+                  Data off-chain
+                </Badge>
+                <Badge className="bg-white/10 text-white border-white/20">
+                  Verifiable by anyone
+                </Badge>
               </div>
             </div>
           </div>

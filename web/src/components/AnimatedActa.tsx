@@ -4,7 +4,6 @@ import React from "react";
 import clsx from "clsx";
 import { TextAnimate } from "@/components/ui/text-animate";
 
-
 type MeltingWordProps = {
   word?: string;
   as?: React.ElementType;
@@ -54,14 +53,12 @@ export default function MeltingWord({
             "text-white",
             "drop-shadow-[0_0_14px_rgba(255,255,255,0.25)]"
           )}
-          startOnView={false} 
+          startOnView={false}
           once
           accessible
         >
           {word}
         </TextAnimate>
-
-        
       </Tag>
     </div>
   );

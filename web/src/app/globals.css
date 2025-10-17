@@ -119,32 +119,31 @@
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
-  --animate-shine: shine var(--duration) infinite linear
-;
+  --animate-shine: shine var(--duration) infinite linear;
   @keyframes shine {
-  0% {
-    background-position: 0% 0%;
+    0% {
+      background-position: 0% 0%;
     }
-  50% {
-    background-position: 100% 100%;
+    50% {
+      background-position: 100% 100%;
     }
-  to {
-    background-position: 0% 0%;
+    to {
+      background-position: 0% 0%;
     }
   }
 }
@@ -154,12 +153,16 @@
 }
 
 @keyframes shiny-text {
-    0%   { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
   }
-  .animate-shiny-text {
-    animation: shiny-text 2.25s linear infinite;
+  100% {
+    background-position: 200% 0;
   }
+}
+.animate-shiny-text {
+  animation: shiny-text 2.25s linear infinite;
+}
 
 @layer base {
   * {
@@ -172,21 +175,21 @@
 
 /* Scrollbar thin */
 .scrollbar-thin {
-  scrollbar-width: thin;                    /* Firefox */
-  scrollbar-color: rgba(255,255,255,.25) transparent;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
 }
 .scrollbar-thin::-webkit-scrollbar {
-  width: 6px;                               /* Chrome / Edge / Safari */
+  width: 6px; /* Chrome / Edge / Safari */
 }
 .scrollbar-thin::-webkit-scrollbar-track {
   background: transparent;
 }
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.22);
+  background: rgba(255, 255, 255, 0.22);
   border-radius: 9999px;
 }
 .scrollbar-thin:hover::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* ====== Melting Word (Acta) ====== */
@@ -209,7 +212,12 @@
     position: absolute;
     inset: 0;
     /* same gradient as main text */
-    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    background: linear-gradient(
+      90deg,
+      var(--primary),
+      var(--accent),
+      var(--primary)
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -226,8 +234,13 @@
   }
 
   /* Underline that draws on first cycle (optional but memorable) */
-  .melting-text::marker { content: ""; } /* silence list marker just in case */
-  .melting-text::selection { background: rgba(239,184,16,0.22); color: var(--foreground); }
+  .melting-text::marker {
+    content: "";
+  } /* silence list marker just in case */
+  .melting-text::selection {
+    background: rgba(239, 184, 16, 0.22);
+    color: var(--foreground);
+  }
 
   /* Reduced motion: keep style, disable motion */
   @media (prefers-reduced-motion: reduce) {
@@ -239,12 +252,24 @@
   }
 
   @keyframes acta-melt {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(20px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(20px);
+    }
   }
 
   @keyframes acta-drip {
-    0%, 100% { transform: scaleY(1);   opacity: 0.5; }
-    50%      { transform: scaleY(1.5); opacity: 0.7; }
+    0%,
+    100% {
+      transform: scaleY(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scaleY(1.5);
+      opacity: 0.7;
+    }
   }
 }

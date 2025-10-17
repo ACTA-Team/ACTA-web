@@ -52,7 +52,10 @@ function StepCard({ data }: { data: Step }) {
 
   return (
     //  explicit height so the grid doesn't collapse
-    <div className="relative h-[460px] sm:h-[480px] md:h-[520px] lg:h-[440px]" style={{ perspective: 1200 }}>
+    <div
+      className="relative h-[460px] sm:h-[480px] md:h-[520px] lg:h-[440px]"
+      style={{ perspective: 1200 }}
+    >
       <motion.div
         className="relative h-full"
         style={{ transformStyle: "preserve-3d" }}
@@ -225,7 +228,7 @@ export default function HowItWorks() {
           <defs>
             <linearGradient id="hiwLine" x1="0" x2="1">
               <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="100%" stopColor="#ffffff" />
+              <stop offset="100%" stopColor="#ffffff" />
             </linearGradient>
           </defs>
           <motion.path
@@ -254,8 +257,6 @@ export default function HowItWorks() {
           ))}
         </motion.div>
       </div>
-
-    
     </section>
   );
 }

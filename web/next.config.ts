@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
         source: "/ingest/decide",
         destination: "https://us.i.posthog.com/decide",
       },
-    ]
+    ];
   },
   // Necesario para soportar las requests con trailing slash de PostHog
   skipTrailingSlashRedirect: true,
