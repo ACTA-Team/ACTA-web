@@ -7,10 +7,6 @@
     {
       "source": "/api/mainnet/:path*",
       "destination": "https://api.mainnet.acta.build/:path*"
-    },
-    {
-      "source": "/links/:path*",
-      "destination": "https://links.acta.build/:path*"
     }
   ]
 }
