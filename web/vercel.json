@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/testnet/:path*",
+      "destination": "https://api.testnet.acta.build/:path*"
+    },
+    {
+      "source": "/api/mainnet/:path*",
+      "destination": "https://api.mainnet.acta.build/:path*"
+    }
+  ]
+}
