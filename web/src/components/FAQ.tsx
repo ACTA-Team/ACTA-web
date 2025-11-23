@@ -14,27 +14,27 @@ const faqData = [
   {
     question: "Do I need blockchain knowledge?",
     answer:
-      "No, only create a Wallet and we handle all the blockchain complexity for you.",
+      "No, you only need to create a Wallet and we handle all the blockchain complexity for you.",
   },
   {
     question: "Are there templates available?",
     answer:
-      "Start from our bases or customize. We provide templates for common use cases like KYC, escrow, and certifications.",
+      "Start from our bases or customize. We provide templates for common use cases like, escrows, contributions badges, certifications and more.",
   },
   {
     question: "Is verification public?",
     answer:
-      "Yes, via link or widget. Anyone can verify credentials without needing special access.",
+      "Yes. On-chain state makes verification public and tamper-proof via link or QR, independent of the issuer.",
   },
   {
     question: "What about pricing?",
     answer:
-      "Coming soon; early partners get credits. We're working on transparent, developer-friendly pricing.",
+      "Super simple: $1 USDC per credential. If you're an early partner, you get free credits or even free tiers.",
   },
   {
     question: "How secure is the system?",
     answer:
-      "Built on Stellar blockchain with enterprise-grade encryption. Your data is protected both on and off-chain.",
+      "Built on Stellar blockchain with enterprise-grade encryption. Your data is protected on-chain.",
   },
 ];
 
