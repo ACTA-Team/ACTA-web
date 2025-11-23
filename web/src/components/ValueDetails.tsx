@@ -86,9 +86,9 @@ export default function ValueDetails() {
                 icon={<Webhook className="w-5 h-5 text-white/80" />}
                 title="For issuers (startups / platforms)"
                 bullets={[
-                  "Integrate in hours with API/SDK and templates.",
+                  "Integrate in minutes with API/SDK and templates.",
                   "Public state to reduce disputes and fraud.",
-                  "Webhooks to automate lifecycle: issued/revoked/expired.",
+                  "Tamper-proof lifecycle: verifiable state for every credential, publicly auditable.",
                 ]}
                 badge="Build fast"
               />
@@ -100,8 +100,8 @@ export default function ValueDetails() {
                 title="For holders (end users)"
                 bullets={[
                   "Share a link/QR without exposing your data.",
-                  "If revoked or expired, verifiers see it immediately.",
-                  "Portable across apps and devices.",
+                  "Share only what you need, nothing more.",
+                  "Your data stays encrypted in your personal Vault, only you can access it.",
                 ]}
                 badge="Own your proof"
               />
@@ -112,9 +112,9 @@ export default function ValueDetails() {
                 icon={<CheckCircle2 className="w-5 h-5 text-white/80" />}
                 title="For verifiers (partners / third parties)"
                 bullets={[
-                  "No account required: open link or drop-in widget.",
-                  "Objective verification against the blockchain.",
-                  "Clear outcomes: Active · Revoked · Expired.",
+                  "No account needed. Verify via link or QR code",
+                  "Cryptographic verification directly against Soroban (on-chain)",
+                  "Deterministic outcomes: Active · Revoked · Expired",
                 ]}
                 badge="Verify instantly"
               />

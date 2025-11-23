@@ -91,14 +91,14 @@ export default function ActaLanding() {
                 className="bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] rounded-2xl h-14 px-8 text-lg font-semibold shadow-lg transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#404040]/40 w-full"
               >
                 <a
-                  href="//demo.acta.build"
+                  href="//dapp.acta.build"
                   onClick={() =>
                     ph?.capture("clicked_try_demo", {
                       location: "landing_page",
                     })
                   }
                 >
-                  Try our Demo!
+                  Try our dApp!
                 </a>
               </Button>
             </div>
