@@ -147,10 +147,10 @@ export default function HowItWorks() {
       icon: <Globe className="h-5 w-5" />,
       title: "Issuer emits credential",
       description:
-        "Issuer calls our API or use our dAppp. We canonicalize and hash the payload.",
+        "Issuer calls the API/SDK; ACTA encrypts the payload and anchors it on-chain.",
       bullets: [
-        "Template → VC JSON (no volatile fields).",
-        "Content Secure and protected against tampering.",
+        "Canonical VC JSON.",
+        "Public on-chain anchor for verification (Active / Revoked / Expired)",
         "We return verify link + QR code.",
       ],
       snippet: `POST /v1/credentials
