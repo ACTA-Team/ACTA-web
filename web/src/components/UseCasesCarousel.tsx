@@ -70,7 +70,7 @@ const cases = [
   {
     Icon: ShieldCheck,
     title: "Release Attestation",
-    desc: "Verify published builds, releases, or versions with checksums and signatures.",
+    desc: "Verifiable proof that your startup shipped a specific version or build.",
   },
   {
     Icon: BadgeCheck,
