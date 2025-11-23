@@ -39,29 +39,29 @@ export default function ValueDetailsExtended() {
               value: "inhouse",
               icon: <Wrench className="w-4 h-4" />,
               title: "Build in-house",
-              pain: "Expensive, slow; maintain on-chain, security & public verification.",
-              win: "Acta ships it all: API/SDK, anchoring, public verification.",
+              pain: "Pain: Expensive, slow, and requires deep expertise to build DID, encryption, Vaults, on-chain anchoring, and public verification..",
+              win: "ACTA: Ships the full stack — DID:pkh, issuer API/SDK, encrypted Vault, Soroban anchoring, and instant on-chain verification.",
             },
             {
               value: "pdf",
               icon: <FileText className="w-4 h-4" />,
               title: "PDFs / e-sign",
-              pain: "Hard for third parties to verify; no live state.",
-              win: "Live status + objective, public verification.",
+              pain: "Pain: Easy to forge, hard to verify, and no live status (no revocation, no updates).",
+              win: "ACTA: Cryptographic credentials with live on-chain status and public, objective verification.",
             },
             {
               value: "onchain",
               icon: <Database className="w-4 h-4" />,
-              title: "Store everything on-chain",
-              pain: "Costly, slow, exposes PII.",
-              win: "Hash on-chain; encrypted data off-chain (privacy + low cost).",
+              title: "Web2 storage",
+              pain: "Pain: Centralized servers hold unencrypted PII, easy to breach, modify, or lose. If the company dies, your credential dies.",
+              win: "ACTA: Encrypted Vaults on-chain, even if ACTA disappears your credentials will remain verifiable forever thanks to Soroban.",
             },
             {
               value: "noanchor",
               icon: <Unlink className="w-4 h-4" />,
               title: "VCs without anchoring",
-              pain: "Depend 100% on issuer; little public traceability.",
-              win: "Public anchoring on Stellar: anyone can verify.",
+              pain: "Pain: Rely entirely on the issuer’s backend; no public proof of authenticity or revocation.",
+              win: "ACTA: Anchored on Soroban public, tamper-proof verification that never depends on the issuer.",
             },
           ].map(a => (
             <Accordion key={a.value} type="single" collapsible>
@@ -100,23 +100,18 @@ export default function ValueDetailsExtended() {
             <Info className="mt-1 h-6 w-6 text-white/70 flex-shrink-0" />
             <div className="space-y-3">
               <p className="font-semibold text-white text-base">
-                &ldquo;Zero databases&rdquo; — what we mean
+                &ldquo;Zero databases architecture&rdquo;
               </p>
               <p className="text-white/70 leading-relaxed">
-                You don&apos;t need to run a database for credentials. Acta
-                manages encrypted storage and on-chain state; your app can be
-                stateless (store only the{" "}
-                <code className="bg-white/10 px-1.5 py-0.5 rounded text-white">
-                  credentialId
-                </code>
-                ).
+                You don’t need to store or manage credential data.
+ACTA keeps the encrypted payload on-chain and manages the full lifecycle on Soroban.
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
                 <Badge className="bg-white/10 text-white border-white/20">
-                  Hash on-chain
+                  No backend needed
                 </Badge>
                 <Badge className="bg-white/10 text-white border-white/20">
-                  Data off-chain
+                  Data on-chain
                 </Badge>
                 <Badge className="bg-white/10 text-white border-white/20">
                   Verifiable by anyone
