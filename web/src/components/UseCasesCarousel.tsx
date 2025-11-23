@@ -28,96 +28,58 @@ import {
 // ---------------------------------------------
 const cases = [
   {
-    Icon: HeartHandshake,
-    title: "Donation Delivered",
-    desc: "Donation processed and delivered.",
-  },
-  {
-    Icon: Fingerprint,
-    title: "Identity Proof Linked",
-    desc: "Links verified account/DID (basic).",
-  },
-  {
-    Icon: Cpu,
-    title: "Model Provenance",
-    desc: "AI: signed and traceable weights/training.",
-  },
-  {
     Icon: FileCheck2,
     title: "Escrow Completed",
-    desc: "Prove an escrow settled successfully.",
-  },
-  {
-    Icon: BadgeCheck,
-    title: "Grant Delivered",
-    desc: "Attest deliveries tied to grants.",
-  },
-  {
-    Icon: LockKeyhole,
-    title: "KYC Verified",
-    desc: "Share-only-the-proof, not the PII.",
-  },
-  {
-    Icon: UsersRound,
-    title: "Participation Badge",
-    desc: "Events, hackathons, courses.",
-  },
-  {
-    Icon: Receipt,
-    title: "Invoice Paid",
-    desc: "Verifiable proof of paid invoice.",
-  },
-  {
-    Icon: Flag,
-    title: "Milestone Completed",
-    desc: "Milestone delivered and approved with tx/date.",
-  },
-  {
-    Icon: FileSignature,
-    title: "Contract Signed / NDA",
-    desc: "Signed document hash + status.",
+    desc: "Verifiable proof that an escrow or gig was delivered and settled — zero disputes.",
   },
   {
     Icon: Bug,
-    title: "Bug Bounty Paid",
-    desc: "Bounty payment confirmed, no disputes.",
+    title: "Task / Contribution Delivered",
+    desc: "Credential for completed tasks or contributions, building real cross-platform reputation.",
+  },
+  {
+    Icon: UsersRound,
+    title: "Contributor Reputation",
+    desc: "A permanent, verifiable record of user performance in your platform.",
+  },
+  {
+    Icon: BadgeCheck,
+    title: "Crowdfunding Deliverable",
+    desc: "Proof that a funded milestone or community-backed deliverable was shipped.",
+  },
+  {
+    Icon: Flag,
+    title: "Startup Milestone Shipped",
+    desc: "Roadmap items delivered and approved — timestamped and verifiable.",
+  },
+  {
+    Icon: HeartHandshake,
+    title: "Impact / Donation Proof",
+    desc: "Transparent, verifiable proof of where donations went and what was delivered.",
+  },
+  {
+    Icon: Receipt,
+    title: "Payment Proof",
+    desc: "Credential showing a payout or invoice was actually completed.",
   },
   {
     Icon: Briefcase,
-    title: "Employment Verified",
-    desc: "Proof of employment/role without exposing PII.",
-  },
-  {
-    Icon: GraduationCap,
-    title: "Certification Earned",
-    desc: "Course or exam passed (expirable).",
+    title: "Role / Membership Verified",
+    desc: "Attest real roles, positions, or memberships — without exposing raw PII.",
   },
   {
     Icon: ShieldCheck,
     title: "Release Attestation",
-    desc: "Published version checksums/signatures.",
+    desc: "Verifiable proof that your startup shipped a specific version or build.",
   },
   {
-    Icon: Database,
-    title: "Data Snapshot",
-    desc: "Dataset/log integrity with public hash.",
-  },
-  {
-    Icon: PackageCheck,
-    title: "Supply Checkpoint",
-    desc: "Batch scan and status at each stage.",
-  },
-  {
-    Icon: Truck,
-    title: "Delivery Confirmed",
-    desc: "Delivery received with who/when/where.",
-  },
-  {
-    Icon: Leaf,
-    title: "Carbon Credit Retired",
-    desc: "CO₂ retirement/offset certificate.",
+    Icon: BadgeCheck,
+    title: "Participation Badge",
+    desc: "Issue badges for cohorts, hackathons, programs, contributors, power-users and more.",
   },
 ];
+
+
 
 // ---------------------------------------------
 // Card
