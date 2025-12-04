@@ -1,4 +1,4 @@
-# ACTA Web Frontend
+# Website
 
 Modern web interface for the ACTA (Automated Credential Trust Authority) ecosystem, featuring Passkey authentication and Stellar blockchain integration.
 
